@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { Dog } from '../model/dog'
@@ -9,8 +9,9 @@ import { Dog } from '../model/dog'
   styleUrls: ['./dog-register-form.component.css']
 })
 export class DogRegisterFormComponent implements OnInit {
+  
   form: FormGroup;
-
+  @Output() newDogRegister = new EventEmitter<FormGroup>();
   constructor() { }
 
   ngOnInit() {
@@ -18,11 +19,16 @@ export class DogRegisterFormComponent implements OnInit {
 
   createNewDog(aform) {
     //const new_dog = new Dog()
-    console.log(aform)
+    this.form = aform.form
+    this.newDogRegister.emit(this.form)
     /*this.form = this.fb.group({
       email: ['',Validators.required],
       password: ['',Validators.required]
     });*/
+  }
+
+  click() {
+    console.log("Click")
   }
   
 }

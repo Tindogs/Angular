@@ -10,14 +10,8 @@
   >
 
   <label for="inputPurebreed">Pureza de Raza</label>
-  <input 
-    type="text"
-    ngModel 
-    id="inputPurebreed"
-    name="purebreed"
-    #purebreedRef="ngModel" 
-    required
-  >
+  <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="true" > Si<br>
+  <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="false" > No<br>
 
   <label for="inputDescription">Descripción</label>
   <input 
@@ -58,6 +52,17 @@
     #dogBreedRef="ngModel" 
     required
   >
+  <input
+    type="file"
+    ngModel
+    id="inputDogPhoto"
+    name="dogPhoto"
+    #dogPhotoRef="ngModel"
+    required
+    />
+
+  <button type="button" (click)="click()">Subir foto</button>
+
 
   <button 
     type="submit">

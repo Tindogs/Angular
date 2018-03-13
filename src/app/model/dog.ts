@@ -4,7 +4,7 @@ export class Dog {
         public id: string,
         public age: string,
         public breed: string,
-        public purebreed: string,
+        public purebreed: boolean,
         public color: string,
         public query: any,
         public likes_from_others: any[],
