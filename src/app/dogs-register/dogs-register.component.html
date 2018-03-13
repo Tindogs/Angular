@@ -1,68 +1,67 @@
-<form ngForm #dogRegisterForm="ngForm" (ngSubmit)="userLogin(loginForm)">
+<form ngForm #dogRegisterForm="ngForm" (ngSubmit)="createNewDog(dogRegisterForm)">
+  <label for="inputDogName">Nombre</label>
+  <input 
+    type="text"
+    ngModel 
+    id="inputDogName"
+    name="dogName"
+    #dogNameRef="ngModel" 
+    required
+  >
 
-<label for="inputDogName">Nombre</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputDogName"
-  name="dogName"
-  #dogNameRef="ngModel" 
-  required
->
+  <label for="inputPurebreed">Pureza de Raza</label>
+  <input 
+    type="text"
+    ngModel 
+    id="inputPurebreed"
+    name="purebreed"
+    #purebreedRef="ngModel" 
+    required
+  >
 
-<label for="inputPurebreed">Pureza de Raza</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputPurebreed"
-  name="purebreed"
-  #purebreedRef="ngModel" 
-  required
->
+  <label for="inputDescription">Descripción</label>
+  <input 
+    type="text"
+    ngModel 
+    id="inputDescription"
+    name="description"
+    #descriptionRef="ngModel" 
+    required
+  >
 
-<label for="inputDescription">Descripción</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputDescription"
-  name="description"
-  #descriptionRef="ngModel" 
-  required
->
+  <label for="inputDogColor">Color</label>
+  <input 
+    type="text"
+    ngModel 
+    id="inputDogColor"
+    name="dogColor"
+    #dogColorRef="ngModel" 
+    required
+  >
 
-<label for="inputDogColor">Color</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputDogColor"
-  name="dogColor"
-  #dogColorRef="ngModel" 
-  required
->
+  <label for="inputDogAge">Edad</label>
+  <input 
+    type="text"
+    ngModel 
+    id="inputDogAge"
+    name="dogAge"
+    #dogAgeRef="ngModel" 
+    required
+  >
 
-<label for="inputDogAge">Edad</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputDogAge"
-  name="dogAge"
-  #dogAgeRef="ngModel" 
-  required
->
+  <label for="inputDogBreed">Raza</label>
+  <input 
+    type="text"
+    ngModel 
+    id="inputDogBreed"
+    name="dogBreed"
+    #dogBreedRef="ngModel" 
+    required
+  >
 
-<label for="inputDogBreed">Raza</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputDogBreed"
-  name="dogBreed"
-  #dogBreedRef="ngModel" 
-  required
->
-
-<button 
-  type="submit">
-  Save
-</button>
+  <button 
+    type="submit">
+    Save
+  </button>
 
 </form>
