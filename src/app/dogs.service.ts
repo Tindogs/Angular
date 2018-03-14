@@ -7,6 +7,7 @@ export class DogsService {
   constructor() { }
 
   registerNewDog(dog: Dog) {
+    JSON.stringify(dog)
     console.log(dog)
   }
 

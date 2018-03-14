@@ -17,6 +17,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { DogRegisterFormComponent } from './dog-register-form/dog-register-form.component';
 
 import { DogsService } from './dogs.service'
+import { UploadsService } from './uploads.service'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DogsService } from './dogs.service'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],
-  providers: [DogsService],
+  providers: [DogsService,
+              UploadsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

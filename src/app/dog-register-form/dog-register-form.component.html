@@ -35,7 +35,7 @@
 
   <label for="inputDogAge">Edad</label>
   <input 
-    type="text"
+    type="number"
     ngModel 
     id="inputDogAge"
     name="dogAge"
@@ -61,8 +61,8 @@
     (change)="uploadFile($event)"
     required
     />
-  <img [src]="downloadURL | async"/>
 
+    <img src={{photoUrl}} class="img_photo_profile"/>
   <button 
     type="submit">
     Save
