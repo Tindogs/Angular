@@ -1,5 +1,8 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+import { AngularFireStorage } from 'angularfire2/storage';
 
 import { Dog } from '../model/dog'
 
@@ -11,24 +14,35 @@ import { Dog } from '../model/dog'
 export class DogRegisterFormComponent implements OnInit {
   
   form: FormGroup;
-  @Output() newDogRegister = new EventEmitter<FormGroup>();
-  constructor() { }
+  downloadURL: Observable<string>;
+  photoUrl: string;
+  @Output() newRegister = new EventEmitter<any>();
+
+  constructor(private storage: AngularFireStorage) { }
 
   ngOnInit() {
   }
 
   createNewDog(aform) {
-    //const new_dog = new Dog()
+    console.log(aform)
     this.form = aform.form
-    this.newDogRegister.emit(this.form)
-    /*this.form = this.fb.group({
-      email: ['',Validators.required],
-      password: ['',Validators.required]
-    });*/
+    this.form.value.photos = [this.photoUrl]
+    this.newRegister.emit(this.form)
+
   }
 
-  click() {
-    console.log("Click")
+  uploadFile($event) {
+    
+    
+    const file = $event.target.files[0];
+    const filePath = file.lastModified + file.name;
+    const task = this.storage.upload(filePath, file);
+    
+    // get notified when the download URL is available
+    
+    this.downloadURL = task.downloadURL();
+    task.downloadURL().subscribe(x => this.photoUrl =  x)
+
   }
   
 }

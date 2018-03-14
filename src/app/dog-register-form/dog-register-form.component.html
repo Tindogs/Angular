@@ -58,11 +58,10 @@
     id="inputDogPhoto"
     name="dogPhoto"
     #dogPhotoRef="ngModel"
+    (change)="uploadFile($event)"
     required
     />
-
-  <button type="button" (click)="click()">Subir foto</button>
-
+  <img [src]="downloadURL | async"/>
 
   <button 
     type="submit">
