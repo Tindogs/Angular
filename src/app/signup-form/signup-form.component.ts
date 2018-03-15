@@ -13,4 +13,8 @@ export class SignupFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
+  Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
+  "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+  */
 }

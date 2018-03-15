@@ -16,10 +16,10 @@ export class DogsRegisterComponent implements OnInit {
   breeds: string[];
 
 
-  constructor(private _dogService: DogsService ) { }
+  constructor(private dogService: DogsService ) { }
 
   ngOnInit() {
-    this.breeds = this._dogService.getDogsBreed()
+    this.breeds = this.dogService.getDogsBreed()
   }
 
   newDogSubmit($event) {
@@ -38,7 +38,8 @@ export class DogsRegisterComponent implements OnInit {
        Aquí iría la llamada al servicio 
        enviandole el perro que vamos a añadir 
     */
-   this._dogService.registerNewDog(dog)
+   this.dogService.registerNewDog(dog)
+   
     
   }
 

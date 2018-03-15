@@ -20,7 +20,7 @@ export class DogRegisterFormComponent implements OnInit {
 
   @Output() newRegister = new EventEmitter<any>();
 
-  constructor(private _uploads: UploadsService) { }
+  constructor(private uploads: UploadsService) { }
 
   ngOnInit() {
   }
@@ -40,9 +40,8 @@ export class DogRegisterFormComponent implements OnInit {
   uploadFile($event) {
     const file = $event.target.files[0];
     const filePath = file.lastModified + file.name;
-    this._uploads.uploadPhoto(filePath,file)
-        .subscribe( photoUrl => this.photoUrl =  photoUrl )
-    
+    this.uploads.uploadPhoto(filePath,file)
+        .subscribe( photoUrl => this.photoUrl =  photoUrl )    
   }
   
 }
