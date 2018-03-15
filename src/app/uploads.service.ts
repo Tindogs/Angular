@@ -10,8 +10,6 @@ export class UploadsService {
   // Devuelve un observable de una string, que es la URL donde se puede ver el archivo subido
   uploadPhoto(filePath,file) {
     const task = this.storage.upload(filePath, file);
-    
-    // get notified when the download URL is available
     return task.downloadURL()
   }
 

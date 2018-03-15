@@ -9,12 +9,17 @@ import { Dog } from '../model/dog'
   templateUrl: './dogs-register.component.html',
   styleUrls: ['./dogs-register.component.css']
 })
+
 export class DogsRegisterComponent implements OnInit {
- 
+
+  /* Esta lista tiene que venir del servicio dogs */
+  breeds: string[];
+
+
   constructor(private _dogService: DogsService ) { }
 
   ngOnInit() {
-
+    this.breeds = this._dogService.getDogsBreed()
   }
 
   newDogSubmit($event) {

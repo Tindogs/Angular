@@ -1,18 +1,30 @@
-<form ngForm #dogRegisterForm="ngForm" (ngSubmit)="createNewDog(dogRegisterForm)">
-  <label for="inputDogName">Nombre</label>
-  <input 
-    type="text"
-    ngModel 
-    id="inputDogName"
-    name="dogName"
-    #dogNameRef="ngModel" 
-    required
-  >
-
-  <label for="inputPurebreed">Pureza de Raza</label>
-  <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="true" > Si<br>
-  <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="false" > No<br>
-
+<form ngForm #dogRegisterForm="ngForm" (ngSubmit)="createNewDog(dogRegisterForm)" validate>
+  <div class="form-group">
+    <label for="inputDogName">Nombre</label>
+    <input 
+      type="text"
+      ngModel 
+      id="inputDogName"
+      name="dogName"
+      #dogName="ngModel" 
+      minlength="2"
+      required
+    >
+    <div *ngIf="dogName.invalid && (dogName.dirty || dogName.touched)"
+    class="alert alert-danger">
+      <div *ngIf="dogName.errors.required">
+        El nombre es obligatorio.
+      </div>
+      <div *ngIf="dogName.errors.minlength">
+        El nombre debe ser de al menos 2 caracteres.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="purebreed">Pureza de Raza</label><br />
+    <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="true" > Si<br>
+    <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="false" > No<br>
+  </div>
   <label for="inputDescription">Descripción</label>
   <input 
     type="text"
@@ -20,7 +32,6 @@
     id="inputDescription"
     name="description"
     #descriptionRef="ngModel" 
-    required
   >
 
   <label for="inputDogColor">Color</label>
@@ -44,14 +55,19 @@
   >
 
   <label for="inputDogBreed">Raza</label>
-  <input 
-    type="text"
+  <select     
     ngModel 
     id="inputDogBreed"
     name="dogBreed"
     #dogBreedRef="ngModel" 
     required
   >
+      <option value="" selected>Selecciona una raza</option>
+      <option *ngFor="let data of dataDropdown" value= {{data}}>
+        {{data}}
+      </option>
+  </select>
+  
   <input
     type="file"
     ngModel
@@ -62,7 +78,7 @@
     required
     />
 
-    <img src={{photoUrl}} class="img_photo_profile"/>
+    <img src="{{photoUrl}}" class="img_photo_profile"/>
   <button 
     type="submit">
     Save

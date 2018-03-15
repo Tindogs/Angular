@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -12,8 +12,11 @@ import { UploadsService } from '../uploads.service';
 })
 export class DogRegisterFormComponent implements OnInit {
   
-  form: FormGroup;
+  dogRegisterForm: FormGroup;
   photoUrl: string = "./../assets/No_Image.png";
+
+  /* Esto tiene que llegar desde un servicio */
+  @Input() dataDropdown: string[]
 
   @Output() newRegister = new EventEmitter<any>();
 
@@ -23,14 +26,14 @@ export class DogRegisterFormComponent implements OnInit {
   }
 
   createNewDog(aform) {
-    this.form = aform.form
+    var form = aform.form
     if( this.photoUrl == "./../assets/No_Image.png") {
-      this.form.value.photos = []
+      form.value.photos = []
     } else {
-      this.form.value.photos = [this.photoUrl]
+      form.value.photos = [this.photoUrl]
     }
     
-    this.newRegister.emit(this.form)
+    this.newRegister.emit(form)
 
   }
 
