@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
+
+  @Output() newRegister = new EventEmitter<any>();
 
   constructor() { }
 
@@ -17,4 +19,8 @@ export class SignupFormComponent implements OnInit {
   Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
   "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
   */
+  userSignUp(signUpForm) {
+    console.log("Entro")
+    this.newRegister.emit(signUpForm)
+  }
 }

@@ -15,10 +15,9 @@ export class DogRegisterFormComponent implements OnInit {
   dogRegisterForm: FormGroup;
   photoUrl: string = "./../assets/No_Image.png";
 
-  /* Esto tiene que llegar desde un servicio */
   @Input() dataDropdown: string[]
 
-  @Output() newRegister = new EventEmitter<any>();
+  @Output() newDogRegister = new EventEmitter<any>();
 
   constructor(private uploads: UploadsService) { }
 
@@ -33,7 +32,7 @@ export class DogRegisterFormComponent implements OnInit {
       form.value.photos = [this.photoUrl]
     }
     
-    this.newRegister.emit(form)
+    this.newDogRegister.emit(form)
 
   }
 

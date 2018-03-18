@@ -1,11 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<nav>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/new_user" routerLinkActive="active">Nuevo usuario</a>
+    </nav>
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <user-login></user-login>
+   <router-outlet></router-outlet>
+  <!--<user-login></user-login>
   <user-signup></user-signup>
-  <dogs-register></dogs-register>
+  <dogs-register></dogs-register> -->
   <img width="300" alt="Angular Logo" src="../assets/Appvengers.png">
 </div>
 <h2>Here are some links to help you start: </h2>

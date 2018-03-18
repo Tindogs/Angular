@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { DogsService } from '../dogs.service'
 
@@ -14,11 +15,14 @@ export class DogsRegisterComponent implements OnInit {
 
   /* Esta lista tiene que venir del servicio dogs */
   breeds: string[];
+  userId: string;
 
-
-  constructor(private dogService: DogsService ) { }
+  constructor(private dogService: DogsService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
     this.breeds = this.dogService.getDogsBreed()
   }
 
@@ -38,7 +42,7 @@ export class DogsRegisterComponent implements OnInit {
        Aquí iría la llamada al servicio 
        enviandole el perro que vamos a añadir 
     */
-   this.dogService.registerNewDog(dog)
+   this.dogService.registerNewDog(this.userId,dog)
    
     
   }

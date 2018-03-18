@@ -7,7 +7,7 @@ export class DogsService {
 
   constructor(private http: HttpClient) { }
 
-  registerNewDog(dog: Dog) {
+  registerNewDog(userId: string, dog: Dog) {
     
     const jsonDog = JSON.stringify(dog)
     console.log(jsonDog)
