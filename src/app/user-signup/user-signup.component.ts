@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user-signup',
@@ -9,7 +9,6 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class UserSignupComponent implements OnInit {
 
   constructor(  
-              private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit() {
