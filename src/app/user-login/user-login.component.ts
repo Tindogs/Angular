@@ -22,8 +22,9 @@ export class UserLoginComponent {
   doLogin(login: Login): void {
     console.log("UserLoginComponent:: doLogin" + login);
      this._userService.loginUser(login)
-        .subscribe(() => {
-        //alert('El contacto se ha creado correctamente :-)');        
+        .subscribe((user) => {
+        //alert('El contacto se ha creado correctamente :-)');    
+        console.log(user)    
         this.router.navigate(['/user_detail']);
 
       });

@@ -18,9 +18,9 @@ export class UsersService {
     return this._http
           .post('http://34.239.83.44:3000/apiv1/users/authenticate/', login)
           .map((response: Response) => {
-            console.log("UsersService:: response" + response);
+            console.log("UsersService:: response" + response['result']);
             console.log("UsersService:: response" + JSON.stringify(response.json()));
-            return User.newFromJson(response.json());
+            return User.newFromJson((response.json().result));
           });
   }
 }
