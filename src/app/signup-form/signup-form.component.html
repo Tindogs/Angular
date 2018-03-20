@@ -1,78 +1,88 @@
-<form ngForm #signUpForm="ngForm" (ngSubmit)="userSignUp(signUpForm)">
+<div class="container" style="text-align:left;">
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+      <form ngForm #signUpForm="ngForm" (ngSubmit)="userSignUp(signUpForm)">
+        
+        <!-- Firstname -->
+        <div class="form-group">
+          <label for="inputFirstName"><b>Nombre</b></label>
+          <input 
+            type="text"
+            class="form-control"
+            ngModel 
+            name="first_name"
+            id="inputFirstName"
+            #firstNameRef="ngModel" 
+            required>
+          <small class="form-text text-muted mensaje-error" *ngIf="firstNameRef.touched && firstNameRef.invalid">
+            Debes introducir el Nombre.
+          </small>
+        </div>
+        
+        <!-- Lastname -->
+        <div class="form-group">
+          <label for="inputLastName"><b>Apellidos</b></label>
+          <input 
+            type="text"
+            class="form-control"
+            ngModel 
+            name="last_name"
+            id="inputLastName"
+            #lastNameRef="ngModel" 
+            required>
+          <small class="form-text text-muted mensaje-error" *ngIf="lastNameRef.touched && lastNameRef.invalid">Debes introducir los Apellidos.</small>
+        </div>
 
-<label for="inputName">Nombre</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputName"
-  name="userName"
-  #userNameRef="ngModel" 
-  required
->
+        <!-- Email -->
+        <div class="form-group">
+          <label for="inputEmail"><b>Correo Electrónico</b></label>
+          <input 
+            type="email"
+            class="form-control"
+            ngModel
+            name="email"
+            id="inputEmail"
+            #emailRef="ngModel"
+            required>
+          <small class="form-text text-muted mensaje-error" *ngIf="emailRef.touched && emailRef.invalid">Debes introducir el Email.</small>
+        </div> 
 
-<label for="inputEmail">Correo Electrónico</label>
-<input 
-  type="email"
-  name="email"
-  ngModel
-  id="inputEmail"
-  #emailRef="ngModel"
-  required
->  
+        <!-- User Name -->
+        <div class="form-group">
+          <label for="inputUserName"><b>Usuario</b></label>
+          <input 
+            type="text"
+            class="form-control"
+            ngModel 
+            id="inputUserName"
+            name="username"
+            #userRef="ngModel" 
+            required>
+          <small class="form-text text-muted mensaje-error" *ngIf="userRef.touched && userRef.invalid">Debes introducir el Usuario.</small>
+        </div>
 
-<label for="inputSurname">Apellidos</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputSurname"
-  name="surname"
-  #surnameRef="ngModel" 
-  required
->
+        <!-- Password -->
+        <div class="form-group">
+        <label for="inputPass"><b>Contraseña</b></label>
+          <input 
+            type="password"
+            class="form-control"
+            ngModel
+            name="password"
+            id="inputPass"
+            #passRef="ngModel"
+            required>
+          <small class="form-text text-muted mensaje-error" *ngIf="passRef.touched && passRef.invalid">Debes introducir la Contraseña.</small>
+        </div>
 
-<label for="inputUser">Usuario</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputUser"
-  name="user"
-  #userRef="ngModel" 
-  required
->
-
-<label for="inputPhone">Teléfono</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputPhone"
-  name="phone"
-  #phoneRef="ngModel" 
-  required
->
-
-<label for="inputPass">Contraseña</label>
-<input 
-  type="password"
-  name="pass"
-  ngModel
-  id="inputPass"
-  #passRef="ngModel"
-  required
->
-
-<label for="inputMobile">Movil</label>
-<input 
-  type="text"
-  name="mobile"
-  ngModel
-  id="inputMobile"
-  #mobileRef="ngModel"
-  required
->
-
-<button 
-  type="submit">
-  SignUp
-</button>
-  
-</form>
+        <button 
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="signUpForm.invalid">
+          SignUp
+        </button>
+        
+      </form>
+    </div>
+  </div>
+</div>
