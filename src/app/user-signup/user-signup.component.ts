@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+import { User } from '../model/user';
+import { UserService } from '../user.service';
+
+
 @Component({
   selector: 'user-signup',
   templateUrl: './user-signup.component.html',
   styleUrls: ['./user-signup.component.css']
 })
-export class UserSignupComponent implements OnInit {
+export class UserSignupComponent {
 
-  constructor(  
-              private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(private _userService: UserService,
+    private _route: ActivatedRoute,
+    private _router: Router) { }
 
-  ngOnInit() {
-  }
-
-  newSubmit($event) {
-    console.log("User signup " + $event)
-    this.router.navigate(['/new_dog/oeoeoeoeoe']);
+  newSubmit(user: User): void {
+    this._userService.registerNewUser(user)
+    .subscribe(() => {
+      alert('El contacto se ha creado correctamente :-)');
+      this._router.navigate(['/new_dog/oeoeoeoeoe']);
+  });
   }
 }

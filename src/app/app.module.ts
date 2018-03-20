@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
 //Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { environment } from '../environments/environment.1';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -19,6 +20,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { DogRegisterFormComponent } from './dog-register-form/dog-register-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
+import { UserService } from './user.service'
 import { DogsService } from './dogs.service'
 import { UploadsService } from './uploads.service'
 
@@ -37,11 +39,14 @@ import { UploadsService } from './uploads.service'
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
+
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AppRoutingModule    
   ],
-  providers: [DogsService,
+  providers: [UserService,
+              DogsService,
               UploadsService],
   bootstrap: [AppComponent]
 })
