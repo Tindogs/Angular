@@ -23,4 +23,14 @@ export class UsersService {
             return User.newFromJson((response.json().result));
           });
   }
+
+  registerNewUser(user: User): Observable<User>{
+    console.log(user);
+    return this._http
+                .post(`${environment.apiURL}/users/register/`, user)
+                .map((respuesta: Response) => {
+                  return User.newFromJson(respuesta.json)
+                  //return respuesta.json() as User;
+                })
+  }
 }
