@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 //Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.1';
 
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -18,11 +18,13 @@ import { DogsRegisterComponent } from './dogs-register/dogs-register.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { DogRegisterFormComponent } from './dog-register-form/dog-register-form.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
-import { UserService } from './user.service'
+import { UsersService } from './users.service'
 import { DogsService } from './dogs.service'
 import { UploadsService } from './uploads.service'
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UploadsService } from './uploads.service'
     LoginFormComponent,
     SignupFormComponent,
     DogRegisterFormComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { UploadsService } from './uploads.service'
     AngularFireStorageModule,
     AppRoutingModule    
   ],
-  providers: [UserService,
+  providers: [UsersService,
               DogsService,
               UploadsService],
   bootstrap: [AppComponent]

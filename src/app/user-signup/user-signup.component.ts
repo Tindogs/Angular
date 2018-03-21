@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { User } from '../model/user';
-import { UserService } from '../user.service';
+import { UsersService } from '../users.service';
 
 
 @Component({
@@ -12,15 +12,16 @@ import { UserService } from '../user.service';
 })
 export class UserSignupComponent {
 
-  constructor(private _userService: UserService,
+  constructor(private _usersService: UsersService,
     private _route: ActivatedRoute,
     private _router: Router) { }
 
   newSubmit(user: User): void {
-    this._userService.registerNewUser(user)
-    .subscribe(() => {
+    this._usersService.registerNewUser(user)
+    .subscribe((user) => {
+      console.log(user)
       alert('El contacto se ha creado correctamente :-)');
-      this._router.navigate(['/new_dog/oeoeoeoeoe']);
+      this._router.navigate(['/new_dog/']);
   });
   }
 }
