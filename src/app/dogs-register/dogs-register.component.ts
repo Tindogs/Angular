@@ -17,13 +17,13 @@ export class DogsRegisterComponent implements OnInit {
   breeds: string[];
   userId: string;
 
-  constructor(private dogService: DogsService,
+  constructor(private _dogsService: DogsService,
               private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
-    this.breeds = this.dogService.getDogsBreed()
+    this.breeds = this._dogsService.getDogsBreed()
   }
 
   newDogSubmit($event) {
@@ -38,14 +38,11 @@ export class DogsRegisterComponent implements OnInit {
                 $event.value.description,
                 $event.value.photos
               )
-    /* 
-       Aquí iría la llamada al servicio 
-       enviandole el perro que vamos a añadir 
-    */
-   this.dogService.registerNewDog(this.userId,dog)
-   
-    
+   this._dogsService.registerNewDog(this.userId,dog)
+   .subscribe(dog => {
+     console.log("Perro añadido correctamente")
+     console.log(dog)
+     this.router.navigate(['/user_detail']);
+   })
   }
-
-
 }

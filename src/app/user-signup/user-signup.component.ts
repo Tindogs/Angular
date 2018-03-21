@@ -21,7 +21,7 @@ export class UserSignupComponent {
     .subscribe((user) => {
       console.log(user)
       alert('El contacto se ha creado correctamente :-)');
-      this._router.navigate(['/new_dog/']);
+      this._router.navigate(['/new_dog/' + user.id]);
   });
   }
 }

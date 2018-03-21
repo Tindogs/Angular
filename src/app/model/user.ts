@@ -15,7 +15,7 @@ export class User {
 
     static newFromJson(json: any): User {
         return new User(
-            json.id,
+            json._id,
             json.first_name,
             json.last_name,
             json.email,

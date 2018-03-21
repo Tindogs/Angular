@@ -1,17 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { User } from './model/user';
 import { Dog } from './model/dog';
+import { environment } from '../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ResultApi } from './model/results_interface';
 
 @Injectable()
 export class DogsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  registerNewDog(userId: string, dog: Dog) {
-    
-    const jsonDog = JSON.stringify(dog)
-    console.log(jsonDog)
 
+
+  registerNewDog(userId: string, dog: Dog): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': localStorage.getItem('token')
+      })
+    };
+    return this._http
+                .put<ResultApi>(`${environment.apiURL}/dogs/withuser/${userId}`, dog, httpOptions)
+                .map((respuesta: ResultApi) => {
+                    if(respuesta.success == true) {
+                      console.log("Registrar nuevo perro")
+                      return User.newFromJson(respuesta.result)
+                    }
+                })
   }
 
   getDogsBreed(): string[] {
