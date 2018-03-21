@@ -13,5 +13,6 @@ export const environment = {
     storageBucket: '<your-storage-bucket>',
     messagingSenderId: '<your-messaging-sender-id>'
   },
+
   apiURL: 'http://34.239.83.44:3000/apiv1'
 };
