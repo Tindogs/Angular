@@ -12,11 +12,18 @@
             ngModel 
             name="first_name"
             id="inputFirstName"
-            #firstNameRef="ngModel" 
+            #firstNameRef="ngModel"
+            minlength="4" 
             required>
-          <small class="form-text text-muted mensaje-error" *ngIf="firstNameRef.touched && firstNameRef.invalid">
-            Debes introducir el Nombre.
-          </small>
+            <div *ngIf="firstNameRef.invalid && firstNameRef.touched"
+            class="mensaje-error">
+              <div *ngIf="firstNameRef.errors.required">
+                Debes introducir el Nombre.
+              </div>
+              <div *ngIf="firstNameRef.errors.minlength">
+                El nombre debe contener al menos 4 caracteres.
+              </div>
+            </div>
         </div>
         
         <!-- Lastname -->
@@ -30,7 +37,7 @@
             id="inputLastName"
             #lastNameRef="ngModel" 
             required>
-          <small class="form-text text-muted mensaje-error" *ngIf="lastNameRef.touched && lastNameRef.invalid">Debes introducir los Apellidos.</small>
+          <div class="mensaje-error" *ngIf="lastNameRef.touched && lastNameRef.invalid">Debes introducir los Apellidos.</div>
         </div>
 
         <!-- Email -->
@@ -43,8 +50,16 @@
             name="email"
             id="inputEmail"
             #emailRef="ngModel"
-            required>
-          <small class="form-text text-muted mensaje-error" *ngIf="emailRef.touched && emailRef.invalid">Debes introducir el Email.</small>
+            required [pattern]="emailPattern">
+            <div *ngIf="emailRef.invalid && emailRef.touched"
+            class="mensaje-error">
+              <div *ngIf="emailRef.errors.required">
+                Debes introducir un email.
+              </div>
+              <div *ngIf="emailRef.errors.pattern">
+                Formato de email incorrecto.
+              </div>
+            </div>
         </div> 
 
         <!-- User Name -->
@@ -58,7 +73,7 @@
             name="username"
             #userRef="ngModel" 
             required>
-          <small class="form-text text-muted mensaje-error" *ngIf="userRef.touched && userRef.invalid">Debes introducir el Usuario.</small>
+          <div class="mensaje-error" *ngIf="userRef.touched && userRef.invalid">Debes introducir el Usuario.</div>
         </div>
 
         <!-- Password -->
@@ -72,7 +87,7 @@
             id="inputPass"
             #passRef="ngModel"
             required>
-          <small class="form-text text-muted mensaje-error" *ngIf="passRef.touched && passRef.invalid">Debes introducir la Contraseña.</small>
+          <div class="mensaje-error" *ngIf="passRef.touched && passRef.invalid">Debes introducir la Contraseña.</div>
         </div>
 
         <!-- Photo -->

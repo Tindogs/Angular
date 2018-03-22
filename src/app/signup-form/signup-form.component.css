@@ -8,6 +8,7 @@ input.ng-touched.ng-valid {
 
 .mensaje-error{
     color: red;
+    font-size: 80%;
 }
 
 button:disabled{

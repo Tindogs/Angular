@@ -12,18 +12,19 @@ import { UploadsService } from '../uploads.service';
 export class SignupFormComponent implements OnInit{
 
   photoUrl: string = "./../assets/No_Image.png";
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   @Output() newRegister = new EventEmitter<User>();
 
   constructor(private uploads: UploadsService) { }
 
   ngOnInit(){
-
   }
   /*
   Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
   "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
   */
+
   userSignUp(signUpForm: FormGroup): void {
 
     if( this.photoUrl == "./../assets/No_Image.png") {
