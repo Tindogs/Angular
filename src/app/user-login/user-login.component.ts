@@ -25,7 +25,7 @@ export class UserLoginComponent {
         .subscribe((user) => {
         //alert('El contacto se ha creado correctamente :-)');    
         console.log(user)    
-        this.router.navigate(['/user_detail']);
+        this.router.navigate([`/user_dashboard/${user.id}`]);
 
       });
   }
