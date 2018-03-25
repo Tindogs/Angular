@@ -29,6 +29,7 @@ export class DogsRegisterComponent implements OnInit {
   newDogSubmit($event) {
     var purebreed = ($event.value.purebreed == 'true');
     const dog = new Dog("",
+                $event.value.name,
                 $event.value.dogAge,
                 $event.value.dogBreed,
                 purebreed,
@@ -40,9 +41,7 @@ export class DogsRegisterComponent implements OnInit {
               )
    this._dogsService.registerNewDog(this.userId,dog)
    .subscribe(dog => {
-     console.log("Perro añadido correctamente")
-     console.log(dog)
-     this.router.navigate(['/user_detail']);
+     this.router.navigate(['/user_dashboard']);
    })
   }
 }

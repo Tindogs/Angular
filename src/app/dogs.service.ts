@@ -19,11 +19,15 @@ export class DogsService {
         'token': localStorage.getItem('token')
       })
     };
+    
+    console.log(dog)
+    const dogs = {"dogs": [{ "name": dog.name, "description": dog.description, "age": dog.age, "breed": dog.breed, "purebreed": dog.purebreed, "photos": dog.photos, "color": dog.color,"likes_from_others": [],"query": {}}]}
     return this._http
-                .put<ResultApi>(`${environment.apiURL}/dogs/withuser/${userId}`, dog, httpOptions)
+                .put<ResultApi>(`${environment.apiURL}/dogs/withuser/${userId}`, dogs, httpOptions)
                 .map((respuesta: ResultApi) => {
                     if(respuesta.success == true) {
                       console.log("Registrar nuevo perro")
+                      console.log(respuesta)
                       return User.newFromJson(respuesta.result)
                     }
                 })

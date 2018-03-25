@@ -24,7 +24,7 @@ export class User {
             json.password,
             json.coordinates,
             json.photo,
-            json.dogs
+            Dog.newCollectionFromJson(json.dogs)
         );
     }
 }
