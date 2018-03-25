@@ -20,10 +20,15 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { DogRegisterFormComponent } from './dog-register-form/dog-register-form.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { DogMatchComponent } from './dog-match/dog-match.component'
+import { DogListComponent } from './dog-list/dog-list.component';
 
 import { UsersService } from './users.service'
 import { DogsService } from './dogs.service'
-import { UploadsService } from './uploads.service'
+import { UploadsService } from './uploads.service';
+
+
 
 
 @NgModule({
@@ -36,7 +41,10 @@ import { UploadsService } from './uploads.service'
     SignupFormComponent,
     DogRegisterFormComponent,
     PageNotFoundComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserDashboardComponent,
+    DogMatchComponent,
+    DogListComponent
   ],
   imports: [
     BrowserModule,
