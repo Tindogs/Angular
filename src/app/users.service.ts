@@ -46,10 +46,10 @@ export class UsersService {
   getUserProfile(): Observable<User> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'token': localStorage.getItem('token')
+        'token': this.getUserToken()
       })
     };
-    const id = localStorage.getItem('user_id');
+    const id = this.getUserId();
     return this._httpClient.get<ResultApi>(`${environment.apiURL}/users/${id}`,httpOptions)
               .map(response => {
                 return User.newFromJson(response.result)
@@ -62,6 +62,14 @@ export class UsersService {
 
   registerId(id) {
     localStorage.setItem('user_id',id)
+  }
+
+  getUserId() {
+    return localStorage.getItem('user_id');
+  }
+
+  getUserToken() {
+    return localStorage.getItem('token')
   }
 
 }

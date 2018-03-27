@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Router } from '@angular/router';
+
 
 import { UsersService } from '../users.service'
 import { User } from '../model/user';
@@ -12,17 +12,21 @@ import { User } from '../model/user';
 })
 export class UserDetailComponent implements OnInit {
 
-  @Input() user : User
-  constructor(private router: Router) { }
+
+  @Output() addNewDog = new EventEmitter<any>();
+  @Input() user : User;
+
+  photo_user: string = "./../assets/No_Image.png";
+  constructor() { }
     
   ngOnInit() {
+    if(this.user.photo) {
+        this.photo_user = this.user.photo
+    }
   }
 
   newDogClick($event) {
-    console.log("click")
-    
-    /* Esto tiene que ir en el componente padre */
-    this.router.navigate([`new_dog/${this.user.id}`])
+    this.addNewDog.emit()    
   }
 
 }

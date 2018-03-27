@@ -10,7 +10,7 @@ export class User {
         public username: string,
         public password: string,
         public coordinates: number[],
-        public photo: String,
+        public photo: string,
         public dogs: Dog[]
      ) {}
 

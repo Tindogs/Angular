@@ -29,7 +29,7 @@ export class DogsService {
                       console.log("Registrar nuevo perro")
                       console.log(respuesta)
                       return User.newFromJson(respuesta.result)
-                    }
+                    } 
                 })
   }
 
