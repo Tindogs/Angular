@@ -19,7 +19,7 @@ export class UsersService {
 
   loginUser(login: Login): Observable<User> {
     console.log("UsersService:: loginUser " + login.email + " " + login.password);
-    this.user = this._http
+    return this._http
           .post(`${environment.apiURL}/users/authenticate/`, login)
           .map((response: Response) => {
             console.log("UsersService:: response" + response['result']);
@@ -28,7 +28,7 @@ export class UsersService {
             this.registerId(response.json().result._id)
             return  User.newFromJson((response.json().result));
           });
-    return this.user
+    
   }
 
   registerNewUser(user: User): Observable<User>{
@@ -50,10 +50,11 @@ export class UsersService {
       })
     };
     const id = this.getUserId();
-    return this._httpClient.get<ResultApi>(`${environment.apiURL}/users/${id}`,httpOptions)
+    this.user = this._httpClient.get<ResultApi>(`${environment.apiURL}/users/${id}`,httpOptions)
               .map(response => {
                 return User.newFromJson(response.result)
               })
+    return this.user
   }
 
   registerWebToken(token) {
@@ -71,5 +72,9 @@ export class UsersService {
   getUserToken() {
     return localStorage.getItem('token')
   }
+
+  /*getUserObject() {
+    this.user.subscribe()     
+  }*/
 
 }
