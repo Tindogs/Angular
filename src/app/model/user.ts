@@ -10,7 +10,7 @@ export class User {
         public username: string,
         public password: string,
         public coordinates: number[],
-        public photo: String,
+        public photo: string,
         public dogs: Dog[]
      ) {}
 
@@ -24,7 +24,7 @@ export class User {
             json.password,
             json.coordinates,
             json.photo,
-            json.dogs
+            Dog.newCollectionFromJson(json.dogs)
         );
     }
 }

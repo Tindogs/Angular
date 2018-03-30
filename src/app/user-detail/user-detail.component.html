@@ -1,3 +1,7 @@
-<p>
-  user-detail works!
-</p>
+<div>
+  <button (click)="newDogClick($event)">Nuevo perro</button>
+  <img [src]="photo_user" class="img_photo_profile"/>
+  <p> {{ user.first_name }} {{ user.last_name }}</p>
+  <p> {{ user.username }}</p>
+  <p>{{ user.email }}</p>
+</div>

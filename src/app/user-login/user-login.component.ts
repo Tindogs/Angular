@@ -16,16 +16,16 @@ export class UserLoginComponent {
 
   
 
-  constructor( private _userService: UsersService,
+  constructor( private _usersService: UsersService,
                private router: Router) { }
 
   doLogin(login: Login): void {
     console.log("UserLoginComponent:: doLogin" + login);
-     this._userService.loginUser(login)
+     this._usersService.loginUser(login)
         .subscribe((user) => {
         //alert('El contacto se ha creado correctamente :-)');    
         console.log(user)    
-        this.router.navigate([`/user_dashboard/${user.id}`]);
+        this.router.navigate([`/user_dashboard/`]);
 
       });
   }

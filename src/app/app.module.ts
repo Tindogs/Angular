@@ -28,6 +28,8 @@ import { UsersService } from './users.service'
 import { DogsService } from './dogs.service'
 import { UploadsService } from './uploads.service';
 
+import { DogDetailComponent } from './dog-detail/dog-detail.component';
+
 
 
 
@@ -44,7 +46,8 @@ import { UploadsService } from './uploads.service';
     UserDetailComponent,
     UserDashboardComponent,
     DogMatchComponent,
-    DogListComponent
+    DogListComponent,
+    DogDetailComponent
   ],
   imports: [
     BrowserModule,

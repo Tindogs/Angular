@@ -2,5 +2,6 @@
     que siempre seguirán este patrón inicial        */
 export interface ResultApi {
     success: boolean;
+    token?: string;
     result: any;
   }

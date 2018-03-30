@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'dog-list',
+  selector: 'app-dog-list',
   templateUrl: './dog-list.component.html',
   styleUrls: ['./dog-list.component.css']
 })
