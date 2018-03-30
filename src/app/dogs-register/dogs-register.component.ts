@@ -29,6 +29,7 @@ export class DogsRegisterComponent implements OnInit {
   newDogSubmit($event) {
     var purebreed = ($event.value.purebreed == 'true');
     const dog = new Dog("",
+                $event.value.name,
                 $event.value.dogAge,
                 $event.value.dogBreed,
                 purebreed,

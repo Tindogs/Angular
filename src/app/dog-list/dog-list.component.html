@@ -1,3 +1,6 @@
-<p>
-  dog-list works!
-</p>
+<header>
+  <h4>Listado de Perretes</h4>
+</header>
+<ul>
+  <li *ngFor="let perretes of listado">{{ perretes.name }}, {{perretes.age}}, {{perretes.description}}</li>
+</ul>

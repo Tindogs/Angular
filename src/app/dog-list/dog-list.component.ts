@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-dog-list',
+  selector: 'dog-list',
   templateUrl: './dog-list.component.html',
   styleUrls: ['./dog-list.component.css']
 })
-export class DogListComponent implements OnInit {
+export class DogListComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() listado: string[];
 
 }

@@ -2,19 +2,21 @@
 export class Dog {
     constructor(
         public id: string,
-        public age: string,
-        public breed: string,
-        public purebreed: boolean,
-        public color: string,
-        public query: any,
-        public likes_from_others: any[],
-        public description: string,
-        public photos: string[]
+        public name: string,
+        public age?: string,
+        public breed?: string,
+        public purebreed?: boolean,
+        public color?: string,
+        public query?: any,
+        public likes_from_others?: any[],
+        public description?: string,
+        public photos?: string[]
     ) {}
 
     static newFromJson(json: any): Dog {
         return new Dog(
             json._id,
+            json.name,
             json.age,
             json.breed,
             json.purebreed,
