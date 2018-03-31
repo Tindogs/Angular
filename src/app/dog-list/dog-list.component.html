@@ -1,6 +1,7 @@
 <header>
   <h4>Listado de Perretes</h4>
 </header>
+<img [src]="photo_user" class="img_photo_profile"/>
 <ul>
-  <li *ngFor="let perretes of listado">{{ perretes.name }}, {{perretes.age}}, {{perretes.description}}</li>
+  <li *ngFor="let perretes of listado"><strong>{{ perretes.name }}</strong>, {{ perretes.age }}, {{ perretes.description }}</li>
 </ul>

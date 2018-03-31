@@ -17,17 +17,14 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(private router: Router,
               private _usersService: UsersService) {
-    
-                this._perretes = [
-                  new Dog("1","Bobby",10,"Snouzer",true,"Brown",null,null,"Es muy cariñoso",null),
-                  new Dog("2","Perry",6,"Cocker",true,"White&Black",null,null,"Es muy gruñón",null)
-                ]
+
                }
 
   ngOnInit() {
     this._usersService.getUserProfile()
                       .subscribe(user => {
-                        this.user = user
+                        this.user = user;
+                        this._perretes = this.user.dogs
                       })
   }
 
