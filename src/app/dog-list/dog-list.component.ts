@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { Dog } from '../model/dog';
 
 @Component({
   selector: 'app-dog-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DogListComponent implements OnInit {
 
-  constructor() { }
+  @Input() listado: Dog;
+
+  photo_user: string[] = ["./../assets/No_Image.png"]
 
   ngOnInit() {
+    if(this.listado.photos) {
+        this.photo_user = this.listado.photos
+    }
   }
 
 }

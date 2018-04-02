@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 //Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { environment } from '../environments/environment.1';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
