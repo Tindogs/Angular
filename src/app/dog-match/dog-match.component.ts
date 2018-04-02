@@ -25,13 +25,17 @@ export class DogMatchComponent implements OnInit {
   onDislike(event) {
     this.getNextDog()
   }
-
+  
   onLike(event) {
+    /* Comprobar si el perro que acabamos de ver está en nuestro array like_from_others */    
+
+    /* Aquí hay que llamar al servicio dogs y actualizar los datos del perro al que has hecho like */
+
     this.getNextDog()
   }
 
   getNextDog() {
-
+    
   }
 
 }
