@@ -34,12 +34,9 @@ export class UsersService {
   registerNewUser(user: User): Observable<User>{
     return this._http
                 .post(`${environment.apiURL}/users/register/`, user)
-                .map((respuesta: Response) => {
-                  
+                .map((respuesta: Response) => { 
                   this.registerWebToken(respuesta.json().token)
-                  
                   return User.newFromJson(respuesta.json().result)
-                  
                 })
   }
 

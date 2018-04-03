@@ -25,9 +25,9 @@ export class DogsService {
     };
     
     console.log(dog)
-    const dogs = {"dogs": [{ "name": dog.name, "description": dog.description, "age": dog.age, "breed": dog.breed, "purebreed": dog.purebreed, "photos": dog.photos, "color": dog.color,"likes_from_others": [],"query": {}}]}
+    //const dogs = { "name": dog.name, "description": dog.description, "age": dog.age, "breed": dog.breed, "purebreed": dog.purebreed, "photos": dog.photos, "color": dog.color,"likes_from_others": [],"query": {} }
     return this._http
-                .put<ResultApi>(`${environment.apiURL}/dogs/withuser/${userId}`, dogs, httpOptions)
+                .put<ResultApi>(`${environment.apiURL}/dogs/withuser/${userId}`, dog, httpOptions)
                 .map((respuesta: ResultApi) => {
                     if(respuesta.success == true) {
                       console.log("Registrar nuevo perro")
