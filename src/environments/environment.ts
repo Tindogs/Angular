@@ -5,21 +5,13 @@
 
 export const environment = {
   production: false,
-  // firebase: {
-  //   apiKey: '<your-key>',
-  //   authDomain: '<your-project-authdomain>',
-  //   databaseURL: '<your-database-URL>',
-  //   projectId: '<your-project-id>',
-  //   storageBucket: '<your-storage-bucket>',
-  //   messagingSenderId: '<your-messaging-sender-id>'
-  // },
   firebase: {
-    apiKey: 'AIzaSyA8IpN9s6nybky1lTJnxTr5jBsGe1pUzOI',
-    authDomain: 'tindogsprueba.firebaseapp.com',
-    databaseURL: 'https://tindogsprueba.firebaseio.com',
-    projectId: 'tindogsprueba',
-    storageBucket: 'tindogsprueba.appspot.com',
-    messagingSenderId: '669844605109'
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
   },
 
   apiURL: 'http://34.239.83.44:3000/apiv1'
