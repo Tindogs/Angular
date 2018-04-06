@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
-
+import { ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../users.service'
 import { User } from '../model/user';
@@ -12,17 +11,13 @@ import { User } from '../model/user';
 })
 export class UserDetailComponent implements OnInit {
 
-
   @Output() addNewDog = new EventEmitter<any>();
   @Input() user : User;
 
-  photo_user: string = "./../assets/No_Image.png";
-  constructor() { }
+  constructor(
+  ) { }
     
   ngOnInit() {
-    if(this.user.photo) {
-        this.photo_user = this.user.photo
-    }
   }
 
   newDogClick($event) {

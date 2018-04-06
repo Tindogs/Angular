@@ -1,7 +1,15 @@
-<header>
+<div>
   <h4>Listado de Perretes</h4>
-</header>
-<img [src]="photo_user" class="img_photo_profile"/>
+</div>
+
 <ul>
-  <li *ngFor="let perretes of listado"><strong>{{ perretes.name }}</strong>, {{ perretes.age }}, {{ perretes.description }}</li>
+  <li *ngFor="let perretes of listado">
+    <span *ngIf="perretes.photos.length >= 1">
+        <img [src]="perretes.photos" class="img_photo_profile"/>
+      </span>
+      <span *ngIf="perretes.photos.length === 0 ">
+        <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+      </span>
+    <strong>{{ perretes.name }}</strong>, {{ perretes.age }}, {{ perretes.description }}
+  </li>
 </ul>

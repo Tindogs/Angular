@@ -3,5 +3,6 @@
 .img_photo_profile {
     width: 100px;
     height: 100px;
-    border-radius: 50px
+    border-radius: 50px;
+    /*src: url('/../assets/No_Image.png');*/
 }

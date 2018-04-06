@@ -15,16 +15,16 @@ export class UserDashboardComponent implements OnInit {
   private _perretes: Dog[];
   user: User;
 
-  constructor(private router: Router,
-              private _usersService: UsersService) {
-
-               }
+  constructor(
+    private router: Router,
+    private _usersService: UsersService) { }
 
   ngOnInit() {
     this._usersService.getUserProfile()
                       .subscribe(user => {
                         this.user = user;
-                        this._perretes = this.user.dogs
+                        this._perretes = this.user.dogs;
+                        console.log(this.user.photo)
                       })
   }
 

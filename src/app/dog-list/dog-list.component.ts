@@ -11,12 +11,7 @@ export class DogListComponent implements OnInit {
 
   @Input() listado: Dog;
 
-  photo_user: string[] = ["./../assets/No_Image.png"]
-
   ngOnInit() {
-    if(this.listado.photos) {
-        this.photo_user = this.listado.photos
-    }
   }
 
 }
