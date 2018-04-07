@@ -54,6 +54,21 @@ export class UsersService {
     return this.user
   }
 
+  updateUser(user: User): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': this.getUserToken()
+      })
+    };
+    const id = this.getUserId();
+    this.user = this._httpClient
+              .put<ResultApi>(`${environment.apiURL}/users/${id}`, user, httpOptions)
+              .map(response => {
+                return User.newFromJson(response.result)
+              })
+    return this.user
+  }
+
   registerWebToken(token) {
     localStorage.setItem('token',token)
   }

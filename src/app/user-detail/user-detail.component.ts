@@ -12,6 +12,7 @@ import { User } from '../model/user';
 export class UserDetailComponent implements OnInit {
 
   @Output() addNewDog = new EventEmitter<any>();
+  @Output() updateUser = new EventEmitter<any>();
   @Input() user : User;
 
   constructor(
@@ -22,6 +23,10 @@ export class UserDetailComponent implements OnInit {
 
   newDogClick($event) {
     this.addNewDog.emit()    
+  }
+
+  updateUserClick($event) {
+    this.updateUser.emit()  
   }
 
 }
