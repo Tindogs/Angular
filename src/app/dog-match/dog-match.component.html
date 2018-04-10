@@ -1,7 +1,7 @@
-<div>
-  <ng-template appDogToMatch></ng-template>
-  <img src="{{dogsToMatch[0].photos[0]}}" alt="">
-  <p>{{ dogsToMatch[0].name }}</p>
+<div>  
+  <ng-template DogToMatch>
+    <dog-matched [dogsToMatch]="dogsToMatch"></dog-matched>
+  </ng-template>
 </div>
 <div>
   <button (click)="onDislike($event)" class="btn btn-danger"> Dislike</button>

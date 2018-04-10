@@ -70,6 +70,7 @@ import { DogMatchedComponent } from './dog-matched/dog-matched.component';
   providers: [UsersService,
               DogsService,
               UploadsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DogMatchedComponent]
 })
 export class AppModule { }
