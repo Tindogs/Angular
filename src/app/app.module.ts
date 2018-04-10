@@ -31,6 +31,8 @@ import { UploadsService } from './uploads.service';
 import { DogDetailComponent } from './dog-detail/dog-detail.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
+import { DogToMatchDirective } from './dog-to-match.directive';
+import { DogMatchedComponent } from './dog-matched/dog-matched.component';
 
 
 
@@ -51,7 +53,9 @@ import { UserUpdateFormComponent } from './user-update-form/user-update-form.com
     DogListComponent,
     DogDetailComponent,
     UserUpdateComponent,
-    UserUpdateFormComponent
+    UserUpdateFormComponent,
+    DogToMatchDirective,
+    DogMatchedComponent
   ],
   imports: [
     BrowserModule,

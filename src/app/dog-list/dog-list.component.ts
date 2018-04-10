@@ -3,7 +3,7 @@ import { User } from '../model/user';
 import { Dog } from '../model/dog';
 
 @Component({
-  selector: 'app-dog-list',
+  selector: 'dog-list',
   templateUrl: './dog-list.component.html',
   styleUrls: ['./dog-list.component.css']
 })
