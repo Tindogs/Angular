@@ -24,12 +24,16 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
     private _usersService: UsersService) { }
 
   ngOnInit() {
+
     this.userServiceSubscription = this._usersService.getUserProfile()
                       .subscribe(user => {
                         this.user = user;
                         this._perretes = this.user.dogs;
-                        console.log(this.user.photo)
-                      })
+
+                        // LLamo a la función de Geolocalización
+                        this.getGeolocation(this.user);
+                      })    
+                      
   }
 
   ngOnDestroy() {
@@ -42,6 +46,29 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
 
   updateUser($event) {
     this.router.navigate([`user_update/${this.user.id}`])
+  }
+
+  getGeolocation(user: User) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (data) => {
+          console.log(data.coords);
+          user.coordinates = [data.coords.latitude, data.coords.longitude];
+          // Llamo al servicio updateUser y me suscribo pasando las coordinates
+          this.userServiceSubscription = this._usersService.updateUser(user)
+          .subscribe((user) => {
+            this.user = user;
+          });
+        },
+        (error) => {
+          console.log(error);
+        } 
+      );
+    }
+    else {
+      console.log("EL navegador no soporta GeoLocalización")
+    }
+    
   }
 
 }

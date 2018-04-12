@@ -10,12 +10,8 @@ import { UsersService } from './users.service';
 
 @Injectable()
 export class DogsService {
-
   
-
   constructor(private _http: HttpClient, private _users: UsersService) { }
-
-
 
   registerNewDog(userId: string, dog: Dog): Observable<User> {
     const httpOptions = {
@@ -43,19 +39,19 @@ export class DogsService {
     
   }
 
-  getRandomDogForDog(dog:Dog): Observable<Dog> {
+  getDogSearch(): Observable<Dog[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'token': this._users.getUserToken()
       })
-
     };
-    return Observable.of(new Dog("oeo320kd020420d1","Lolito",2,"Aidi",false,"Rojo",{},[],"meo moemo moemome moemded mdoe mosas qwmo mq mqpomopq mowpqmdqopq",[]))
-    /*return this._http.get<ResultApi>(`${environment.apiURL}/dogs/randomDogFor/${dog.id}`,httpOptions)
+    const userId = this._users.getUserId();
+    const dogId = this._users.getDogId();
+
+    return this._http.get<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/search`,httpOptions)
               .map(response => {
-                //return Dog.newFromJson(response.result)
-                
-              })*/
+                return Dog.newCollectionFromJson(response.result)
+              })
   }
 
 }

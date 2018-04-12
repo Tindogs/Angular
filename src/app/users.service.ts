@@ -26,6 +26,7 @@ export class UsersService {
             console.log("UsersService:: response" + JSON.stringify(response.json()));
             this.registerWebToken(response.json().token)
             this.registerId(response.json().result._id)
+            this.registerDogId(response.json().result.dogs[0]._id)
             return  User.newFromJson((response.json().result));
           });
     
@@ -60,6 +61,8 @@ export class UsersService {
         'token': this.getUserToken()
       })
     };
+    console.log("DATOS DESDE EL SERVICIO")
+    console.log(user)
     const id = this.getUserId();
     this.user = this._httpClient
               .put<ResultApi>(`${environment.apiURL}/users/${id}`, user, httpOptions)
@@ -69,6 +72,7 @@ export class UsersService {
     return this.user
   }
 
+
   registerWebToken(token) {
     localStorage.setItem('token',token)
   }
@@ -77,12 +81,20 @@ export class UsersService {
     localStorage.setItem('user_id',id)
   }
 
+  registerDogId(dog_id) {
+    localStorage.setItem('dog_id', dog_id)
+  }
+
   getUserId() {
     return localStorage.getItem('user_id');
   }
 
   getUserToken() {
     return localStorage.getItem('token')
+  }
+
+  getDogId() {
+    return localStorage.getItem('dog_id');
   }
 
   /*getUserObject() {
