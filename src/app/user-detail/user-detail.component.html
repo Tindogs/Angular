@@ -1,13 +1,14 @@
-<div style="margin-bottom:25px;">
+<div class="user_detail">
   <span *ngIf="user.photo">
     <img [src]="user.photo" class="img_photo_profile"/>
   </span>
   <span *ngIf="user.photo === undefined || user.photo === '' ">
     <img src="./../assets/No_Image.png" class="img_photo_profile"/>
   </span>
-  <p> {{ user.first_name }} {{ user.last_name }}</p>
-  <p> {{ user.username }}</p>
-  <p>{{ user.email }}</p>
-  <button (click)="newDogClick($event)">Añadir perro</button>
-  <button (click)="updateUserClick($event)">Editar Usuario</button>
+  <h5> {{ user.first_name }} {{ user.last_name }}</h5>
+  <h6>{{ user.email }}</h6>
+</div>
+<div class="user_buttons">
+  <button (click)="newDogClick($event)" class="btn btn-primary">Añadir perro</button>
+  <button (click)="updateUserClick($event)" class="btn btn-primary">Editar Usuario</button>
 </div>

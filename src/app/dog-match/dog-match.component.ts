@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { DogsService } from '../dogs.service'
 
 import { Dog } from '../model/dog'
+import { Query } from '../model/query'
+
 import { DogToMatchDirective } from '../dog-to-match.directive';
 import { DogMatchedComponent } from '../dog-matched/dog-matched.component';
 
@@ -16,6 +18,7 @@ export class DogMatchComponent implements OnInit {
 
   dog: Dog;
   dogsToMatch: Dog[];
+  queryDog: Query;
   dog_id: string;
   currentDogIndex: number = -1;
   @ViewChild(DogToMatchDirective) dogToMatchHost: DogToMatchDirective;
@@ -28,9 +31,9 @@ export class DogMatchComponent implements OnInit {
 
   ngOnInit() {
     this.dogsToMatch = [
-      new Dog("","Matched Dog 1",4,"",true,"verde",{},[],"loreoeoeoeoeo moemoe mo",["./../assets/bob_esponja.jpg"]),
-      new Dog("","Matched Dog 2",7,"",true,"marrón",{},[],"Lorem ipsum perrete",["./../assets/gary.jpg"]),
-      new Dog("","Matched Dog 3",14,"",true,"blanco y negro",{},[],"Lorem ipsum chiquitor",["./../assets/patricio.jpg"])
+      new Dog("","Matched Dog 1",4,"",true,"verde",this.queryDog,[],"loreoeoeoeoeo moemoe mo",["./../assets/bob_esponja.jpg"]),
+      new Dog("","Matched Dog 2",7,"",true,"marrón",this.queryDog,[],"Lorem ipsum perrete",["./../assets/gary.jpg"]),
+      new Dog("","Matched Dog 3",14,"",true,"blanco y negro",this.queryDog,[],"Lorem ipsum chiquitor",["./../assets/patricio.jpg"])
     ]
     // this._dogsService.getDogSearch()
     // .subscribe((dogsToMatch) => {

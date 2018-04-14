@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -62,6 +63,7 @@ import { DogMatchedComponent } from './dog-matched/dog-matched.component';
     FormsModule,
     HttpClientModule,
     HttpModule,
+    NgbModule.forRoot(),
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,

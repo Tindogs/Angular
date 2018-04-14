@@ -1,15 +1,98 @@
 <div>
-  <h4>Listado de Perretes</h4>
+  <h4>Mis Perretes</h4>
 </div>
 
-<ul>
-  <li *ngFor="let perretes of listado">
-    <span *ngIf="perretes.photos.length >= 1">
-        <img [src]="perretes.photos" class="img_photo_profile"/>
-      </span>
-      <span *ngIf="perretes.photos.length === 0 ">
-        <img src="./../assets/No_Image.png" class="img_photo_profile"/>
-      </span>
-    <strong>{{ perretes.name }}</strong>, {{ perretes.age }}, {{ perretes.description }}
-  </li>
-</ul>
+<div>
+  <ul>
+    <li *ngFor="let dog of listado" class="dog_card" >
+      <span *ngIf="dog.photos.length >= 1">
+          <img [src]="dog.photos" class="img_photo_profile"/>
+        </span>
+        <span *ngIf="dog.photos.length === 0 ">
+          <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+        </span>
+        <div>
+        <h5>{{ dog.name }}</h5>
+        <button (click)="DogSettings(dog, dogModal)" class="btn btn-primary">Ajustes</button>
+        <button (click)="onClickDog(dog)" class="btn btn-primary">Match</button>
+        <!-- <p>{{ dog.age }}</p> 
+        <p>{{ dog.description }}</p> -->
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Modal -->
+<ng-template #dogModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Query Settings of: {{ dog.name }}</h4>
+  </div>
+  <div class="modal-body">
+    <form ngForm #queryForm="ngForm" (ngSubmit)="dogQuery(queryForm)">
+        <!-- DOG AGE-->
+        <label for="dogAge">Age</label>
+        <select class="form-control form-control-sm"
+          ngModel 
+          id="inputDogAge"
+          name="dogAge"
+          #dogAgeRef="ngModel" 
+          required>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+
+        <!-- MAX KMS-->
+        <label for="dogKms">Max Kms</label>
+        <select class="form-control form-control-sm"
+          ngModel 
+          id="inputDogKms"
+          name="dogKms"
+          #dogKmsRef="ngModel" 
+          required>
+          <option>10</option>
+          <option>25</option>
+          <option>50</option>
+          <option>100</option>
+          <option>200</option>
+        </select>
+
+        <div class="form-group">
+          <label for="purebreed">Raza pura?</label><br />
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="true" > Si<br>
+            </label>
+            <label class="btn btn-secondary active">
+              <input type="radio" ngModel #purebreedRef="ngModel" name="purebreed" value="false" checked> No<br>
+            </label>
+          </div>
+        </div>
+
+        <label for="inputDogBreed">Raza</label>
+        <select class="form-control form-control-sm"  
+          ngModel 
+          id="inputDogBreed"
+          name="dogBreed"
+          #dogBreedRef="ngModel" 
+          required
+          >
+            <option value="" selected>Selecciona una raza</option>
+            <option *ngFor="let data of breeds" value= {{data}}>
+              {{data}}
+            </option>
+        </select>
+    </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="onSaveSettings(dog)">Save changes</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

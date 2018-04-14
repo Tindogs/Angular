@@ -1,3 +1,4 @@
+import { Query } from './query'
 
 export class Dog {
     constructor(
@@ -7,7 +8,7 @@ export class Dog {
         public breed: string,
         public purebreed: boolean,
         public color: string,
-        public query: any,
+        public query: Query,
         public likes_from_others: any[],
         public description: string,
         public photos: string[]
