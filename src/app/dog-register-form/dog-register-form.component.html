@@ -23,13 +23,13 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="purebreed">Raza pura?</label><br />
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary">
-          <input type="radio" ngModel #purebreedRef="ngModel"  name="purebreed" value="true" > Si<br>
+      <label for="radioPurebreed">Raza pura?</label><br />
+      <div class="form-check">
+        <label class="btn btn-secondary" for="radioPurebreed1">
+          <input type="radio" id="radioPurebreed1" ngModel #purebreedRef="ngModel"  name="purebreed" value="'true'" required> Si<br>
         </label>
-        <label class="btn btn-secondary active">
-          <input type="radio" ngModel #purebreedRef="ngModel" name="purebreed" value="false" checked> No<br>
+        <label class="btn btn-secondary active" for="radioPurebreed2">
+          <input type="radio" id="radioPurebreed2" ngModel #purebreedRef="ngModel" name="purebreed" value="'false'" checked> No<br>
         </label>
       </div>
     </div>

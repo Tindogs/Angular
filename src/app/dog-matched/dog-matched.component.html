@@ -1,5 +1,10 @@
 <div>
-  <img [src]="dog.photos" style="height: 250px">
+  <span *ngIf="dog.photos.length >= 1">
+    <img [src]="dog.photos[0]" class="img_photo_match"/>
+  </span>
+  <span *ngIf="dog.photos.length === 0 ">
+    <img src="./../assets/No_Image.png" class="img_photo_match"/>
+  </span>
   <h4>{{ dog.name }}</h4>
   <p>{{ dog.description }}</p>
 </div>

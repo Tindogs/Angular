@@ -26,7 +26,7 @@ export class UsersService {
             console.log("UsersService:: response" + JSON.stringify(response.json()));
             this.registerWebToken(response.json().token)
             this.registerId(response.json().result._id)
-            this.registerDogId(response.json().result.dogs[0]._id)
+            //this.registerDogId(response.json().result.dogs[0]._id)
             return  User.newFromJson((response.json().result));
           });
     

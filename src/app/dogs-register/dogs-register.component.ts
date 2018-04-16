@@ -30,20 +30,18 @@ export class DogsRegisterComponent implements OnInit {
   }
 
   newDogSubmit($event) {
-    var purebreed = ($event.value.purebreed == 'true');
-    this.queryDog = new Query(1,1,true, $event.value.dogBreed);
+    this.queryDog = new Query(1,1000,true, $event.value.dogBreed);
     const dog = new Dog("",
                 $event.value.dogName,
                 $event.value.dogAge,
                 $event.value.dogBreed,
-                purebreed,
+                $event.value.purebreed,
                 $event.value.dogColor,
                 this.queryDog,
                 [],
                 $event.value.description,
                 $event.value.photos
               );
-              
    this._dogsService.registerNewDog(this.userId,dog)
    .subscribe(dog => {
      this.router.navigate(['/user_dashboard']);

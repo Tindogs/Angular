@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 
 import { DogsService } from '../dogs.service'
 
@@ -30,19 +30,21 @@ export class DogMatchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dogsToMatch = [
-      new Dog("","Matched Dog 1",4,"",true,"verde",this.queryDog,[],"loreoeoeoeoeo moemoe mo",["./../assets/bob_esponja.jpg"]),
-      new Dog("","Matched Dog 2",7,"",true,"marrón",this.queryDog,[],"Lorem ipsum perrete",["./../assets/gary.jpg"]),
-      new Dog("","Matched Dog 3",14,"",true,"blanco y negro",this.queryDog,[],"Lorem ipsum chiquitor",["./../assets/patricio.jpg"])
-    ]
-    // this._dogsService.getDogSearch()
-    // .subscribe((dogsToMatch) => {
-    //   this.dogsToMatch = dogsToMatch;
-    //   console.log(this.dogsToMatch)
-    //   this.loadNextDog();
-    // });
+    this.dog_id = this.route.snapshot.paramMap.get('id');
+    // this.dogsToMatch = [
+    //   new Dog("","Matched Dog 1",4,"",true,"verde",this.queryDog,[],"Lorem ipsum perrete",["./../assets/bob_esponja.jpg"]),
+    //   new Dog("","Matched Dog 2",7,"",true,"marrón",this.queryDog,[],"Lorem ipsum perrete",["./../assets/gary.jpg"]),
+    //   new Dog("","Matched Dog 3",14,"",true,"blanco y negro",this.queryDog,[],"Lorem ipsum chiquitor",["./../assets/patricio.jpg"])
+    // ]
+    console.log(this.dog_id)
+    this._dogsService.getDogSearch(this.dog_id)
+    .subscribe((dogsToMatch) => {
+      this.dogsToMatch = dogsToMatch;
+      console.log(this.dogsToMatch)
+      this.loadNextDog();
+    });
 
-    this.loadNextDog();
+    //this.loadNextDog();
   }
 
 
