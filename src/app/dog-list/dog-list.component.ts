@@ -32,15 +32,12 @@ export class DogListComponent implements OnInit {
   }
 
   MatchDog(dog){
-    // Aquí pasaría el id del perro pulsado
-    // Me suscribiría al servicio para hacer la petición del Search
     this.dog = dog;
     this.dogId = dog.id;
     this.newDogMatch.emit(dog);
   }
 
   DogSettings(dog, dogModal){
-    //alert("Iría a los ajustes del perro tales como la Query")
     this.dog = dog;
     this.dogId = dog.id
     

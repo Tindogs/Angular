@@ -13,6 +13,8 @@ import { Query } from './model/query';
 export class DogsService {
   
   dogs : Observable<Dog[]>;
+  user : Observable<User>;
+
   constructor(private _http: HttpClient, private _users: UsersService) { }
 
   registerNewDog(userId: string, dog: Dog): Observable<User> {
@@ -65,13 +67,30 @@ export class DogsService {
     const userId = this._users.getUserId();
     const token = this._users.getUserToken();
     console.log("PETICION API SEARCH");
-    console.log(`${environment.apiURL}/users/${userId}/dogs/${dogId}/search`)
-    console.log(token)
     this.dogs = this._http.get<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/search`, httpOptions)
               .map(response => {
                 return Dog.newCollectionFromJson(response.result)
               })
     return this.dogs
+  }
+
+  likeOtherDog(userId: string, dogId: string, otherDogId: string, like: any): Observable<Dog> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': localStorage.getItem('token')
+      })
+    };
+    console.log(like);
+    console.log(`${environment.apiURL}/users/${userId}/dogs/${dogId}/like/${otherDogId}`);
+    return this._http
+                .put<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/like/${otherDogId}`, like, httpOptions)
+                .map((respuesta: ResultApi) => {
+                    if(respuesta.success == true) {
+                      console.log("Like From Others")
+                      console.log(respuesta)
+                      return Dog.newFromJson(respuesta.result);
+                    } 
+                })
   }
 
 }

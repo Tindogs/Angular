@@ -1,10 +1,30 @@
-<div>
-  <span *ngIf="dog.photos.length >= 1">
-    <img [src]="dog.photos[0]" class="img_photo_match"/>
-  </span>
-  <span *ngIf="dog.photos.length === 0 ">
-    <img src="./../assets/No_Image.png" class="img_photo_match"/>
-  </span>
-  <h4>{{ dog.name }}</h4>
-  <p>{{ dog.description }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+
+    <div class="col-md-auto">
+      <span *ngIf="dog.photos.length >= 1">
+          <img [src]="dog.photos[0]" class="img_photo_match"/>
+        </span>
+        <span *ngIf="dog.photos.length === 0 ">
+          <img src="./../assets/No_Image.png" class="img_photo_match"/>
+        </span>
+        <h4>{{ dog.name }}</h4>
+        <p>{{ dog.description }}</p>
+        <!-- <p>{{userId}}</p>
+        <p>{{dog.likes_from_others[0].owner_id}}</p> -->
+    </div>
+
+    <div class="col" style="text-align: left; margin-top: 5em; margin-left: -1em;">
+        <!-- <span *ngIf="dog.likes_from_others.length === 0" style="font-size: 3em; color: Tomato;">
+            <i class="fa fa-thumbs-down fa-lg"></i>
+        </span>
+        <span *ngIf="dog.likes_from_others.length >= 1 && dog.likes_from_others[0].owner_id === userId"  style="font-size: 3em; color: lightgreen;">
+            <i class="fa fa-thumbs-up fa-lg"></i>
+        </span> -->
+    </div>
+
+  </div>
+  
 </div>
+

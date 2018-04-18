@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Dog } from '../model/dog';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'dog-matched',
@@ -10,10 +11,13 @@ export class DogMatchedComponent implements OnInit {
 
   @Input() dogsToMatch: Dog[];
   @Input() dog: Dog;
+  @Input() userId: string;
 
-  constructor() { }
+  constructor(private _userService: UsersService) { }
 
   ngOnInit() {
+    console.log(this.dog);
+    this.userId = this._userService.getUserId();
   }
 
 }

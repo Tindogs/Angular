@@ -8,6 +8,7 @@ import { Query } from '../model/query'
 
 import { DogToMatchDirective } from '../dog-to-match.directive';
 import { DogMatchedComponent } from '../dog-matched/dog-matched.component';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'dog-match',
@@ -17,25 +18,25 @@ import { DogMatchedComponent } from '../dog-matched/dog-matched.component';
 export class DogMatchComponent implements OnInit {
 
   dog: Dog;
+  otherDog: Dog;
   dogsToMatch: Dog[];
   queryDog: Query;
   dog_id: string;
+  userId: string;
   currentDogIndex: number = -1;
   @ViewChild(DogToMatchDirective) dogToMatchHost: DogToMatchDirective;
 
   constructor(
+    private _userService: UsersService,
     private _dogsService: DogsService,
     private route: ActivatedRoute,
     private componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
   ngOnInit() {
+    this.userId = this._userService.getUserId();
     this.dog_id = this.route.snapshot.paramMap.get('id');
-    // this.dogsToMatch = [
-    //   new Dog("","Matched Dog 1",4,"",true,"verde",this.queryDog,[],"Lorem ipsum perrete",["./../assets/bob_esponja.jpg"]),
-    //   new Dog("","Matched Dog 2",7,"",true,"marrón",this.queryDog,[],"Lorem ipsum perrete",["./../assets/gary.jpg"]),
-    //   new Dog("","Matched Dog 3",14,"",true,"blanco y negro",this.queryDog,[],"Lorem ipsum chiquitor",["./../assets/patricio.jpg"])
-    // ]
+    console.log("ID DE MI PERRO")
     console.log(this.dog_id)
     this._dogsService.getDogSearch(this.dog_id)
     .subscribe((dogsToMatch) => {
@@ -44,7 +45,6 @@ export class DogMatchComponent implements OnInit {
       this.loadNextDog();
     });
 
-    //this.loadNextDog();
   }
 
 
@@ -58,16 +58,40 @@ export class DogMatchComponent implements OnInit {
     viewContainerRef.clear();
 
     let componentRef = viewContainerRef.createComponent(componentFactory);
-    componentRef.instance.dog = dogItem
-    console.log(dogItem)
+    componentRef.instance.dog = dogItem;
+    this.otherDog = dogItem
   }
 
-  onDislike(event) {
+  onDislike($event) {
+    const dislike = {
+      "like" : "false"
+    }
+    this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, dislike)
+    .subscribe((otherDog) => {
+      console.log("PERRO DESLIKEADO");
+      console.log(otherDog);
+      this.loadNextDog();
+    })
+    
+  }
+
+  onDoubt($event) {
     this.loadNextDog()
   }
 
-  onLike(event) {
-    this.loadNextDog()
+  onLike($event) {
+    const like = {
+      "like" : "true"
+    }
+
+    this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, like)
+    .subscribe((otherDog) => {
+      console.log("PERRO LIKEADO");
+      console.log(otherDog);
+      this.loadNextDog();
+    })
+
+    
   }
 
 
