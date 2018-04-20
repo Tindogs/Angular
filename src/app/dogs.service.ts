@@ -65,7 +65,6 @@ export class DogsService {
       })
     };
     const userId = this._users.getUserId();
-    const token = this._users.getUserToken();
     console.log("PETICION API SEARCH");
     this.dogs = this._http.get<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/search`, httpOptions)
               .map(response => {
@@ -81,7 +80,6 @@ export class DogsService {
       })
     };
     console.log(like);
-    console.log(`${environment.apiURL}/users/${userId}/dogs/${dogId}/like/${otherDogId}`);
     return this._http
                 .put<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/like/${otherDogId}`, like, httpOptions)
                 .map((respuesta: ResultApi) => {
@@ -91,6 +89,21 @@ export class DogsService {
                       return respuesta.result.match;
                     } 
                 })
+  }
+
+  getDogMatches(dogId: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': this._users.getUserToken()
+      })
+    };
+    const userId = this._users.getUserId();
+    const token = this._users.getUserToken();
+    console.log("PETICION API MATCHES");
+    return this._http.get<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/matches`, httpOptions)
+              .map(response => {
+                return response.result;
+              })
   }
 
 }

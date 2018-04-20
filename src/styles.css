@@ -24,3 +24,17 @@ input.ng-touched.ng-valid {
 h2 {
     margin:1em;
 }
+
+.dog_card {
+    padding: 1em;
+    margin: 1em;
+    border: 2px solid lightgray;
+    border-radius: 5%;
+    box-shadow: grey;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+}

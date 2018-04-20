@@ -8,7 +8,7 @@ import { Dog } from '../model/dog';
 })
 export class DogMatchesComponent implements OnInit {
 
-  @Input() listadoMatches: Dog;
+  @Input() listadoMatches: any[];
 
   constructor() { }
 

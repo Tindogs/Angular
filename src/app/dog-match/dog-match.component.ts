@@ -42,11 +42,19 @@ export class DogMatchComponent implements OnInit {
     console.log("ID DE MI PERRO")
     console.log(this.dog_id)
 
+    // Suscripción al Servicio Search
     this._dogsService.getDogSearch(this.dog_id)
     .subscribe((dogsToMatch) => {
       this.dogsToMatch = dogsToMatch;
       console.log(this.dogsToMatch)
       this.loadNextDog();
+    });
+
+    // Suscripción al Servicio Matches
+    this._dogsService.getDogMatches(this.dog_id)
+    .subscribe((dogMatchedList) => {
+      this.dogMatchedList = dogMatchedList[0];
+      console.log(this.dogMatchedList)
     });
 
   }
@@ -94,17 +102,17 @@ export class DogMatchComponent implements OnInit {
         this.dogMatched = dogMatched.dog;
         alert("Has hecho Match con: " + dogMatched.dog.name);
       }
-      this.onSetDog(this.dogMatched);
+      // this.onSetDog(this.dogMatched);
       this.loadNextDog();
       
     })
 
   }
 
-  onSetDog(dog: Dog){
-    console.log("DOG SET");
-    this.dog = dog;
-    console.log(this.dog);
-  }
+  // onSetDog(dog: Dog){
+  //   console.log("DOG SET");
+  //   this.dog = dog;
+  //   console.log(this.dog);
+  // }
 
 }
