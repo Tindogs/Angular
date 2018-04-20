@@ -34,6 +34,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 import { DogToMatchDirective } from './dog-to-match.directive';
 import { DogMatchedComponent } from './dog-matched/dog-matched.component';
+import { DogMatchesComponent } from './dog-matches/dog-matches.component';
+import { DogDashboardComponent } from './dog-dashboard/dog-dashboard.component';
 
 
 
@@ -56,7 +58,9 @@ import { DogMatchedComponent } from './dog-matched/dog-matched.component';
     UserUpdateComponent,
     UserUpdateFormComponent,
     DogToMatchDirective,
-    DogMatchedComponent
+    DogMatchedComponent,
+    DogMatchesComponent,
+    DogDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,8 @@ import { DogsRegisterComponent } from './dogs-register/dogs-register.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { DogMatchComponent } from './dog-match/dog-match.component';
-import { UserUpdateComponent } from './user-update/user-update.component'
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { DogDashboardComponent } from './dog-dashboard/dog-dashboard.component';
 
 
 const appRoutes: Routes = [
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'user_dashboard', component:  UserDashboardComponent},
   { path: 'dogs_match/:id', component: DogMatchComponent }, // :id Del perro que va buscando match
   { path: 'user_update/:id', component: UserUpdateComponent }, // :id del usuario a actualizar
+  { path: 'dog_dashboard', component:  DogDashboardComponent},
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

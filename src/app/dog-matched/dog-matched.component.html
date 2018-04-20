@@ -11,17 +11,17 @@
         </span>
         <h4>{{ dog.name }}</h4>
         <p>{{ dog.description }}</p>
-        <!-- <p>{{userId}}</p>
-        <p>{{dog.likes_from_others[0].owner_id}}</p> -->
     </div>
 
     <div class="col" style="text-align: left; margin-top: 5em; margin-left: -1em;">
-        <!-- <span *ngIf="dog.likes_from_others.length === 0" style="font-size: 3em; color: Tomato;">
-            <i class="fa fa-thumbs-down fa-lg"></i>
-        </span>
-        <span *ngIf="dog.likes_from_others.length >= 1 && dog.likes_from_others[0].owner_id === userId"  style="font-size: 3em; color: lightgreen;">
+      <div *ngFor="let likes of dog.likes_from_others"> 
+        <span *ngIf="dog.likes_from_others.length >= 1 && likes.dog_like_id === dog_id"  style="font-size: 3em; color: lightgreen; display: inline-block">
             <i class="fa fa-thumbs-up fa-lg"></i>
-        </span> -->
+        </span>
+        <span *ngIf="dog.likes_from_others.length === 0" style="font-size: 3em; color: Tomato; display: inline-block">
+            <i class="fa fa-thumbs-down fa-lg">No Likes</i>
+        </span>
+      </div> 
     </div>
 
   </div>

@@ -24,6 +24,9 @@ export class DogMatchComponent implements OnInit {
   dog_id: string;
   userId: string;
   currentDogIndex: number = -1;
+  dogMatched: Dog;
+  dogMatchedList: Dog[];
+
   @ViewChild(DogToMatchDirective) dogToMatchHost: DogToMatchDirective;
 
   constructor(
@@ -38,6 +41,7 @@ export class DogMatchComponent implements OnInit {
     this.dog_id = this.route.snapshot.paramMap.get('id');
     console.log("ID DE MI PERRO")
     console.log(this.dog_id)
+
     this._dogsService.getDogSearch(this.dog_id)
     .subscribe((dogsToMatch) => {
       this.dogsToMatch = dogsToMatch;
@@ -85,14 +89,22 @@ export class DogMatchComponent implements OnInit {
     }
 
     this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, like)
-    .subscribe((otherDog) => {
-      console.log("PERRO LIKEADO");
-      console.log(otherDog);
+    .subscribe((dogMatched) => {
+      if (dogMatched.match == true) {
+        this.dogMatched = dogMatched.dog;
+        alert("Has hecho Match con: " + dogMatched.dog.name);
+      }
+      this.onSetDog(this.dogMatched);
       this.loadNextDog();
+      
     })
 
-    
   }
 
+  onSetDog(dog: Dog){
+    console.log("DOG SET");
+    this.dog = dog;
+    console.log(this.dog);
+  }
 
 }

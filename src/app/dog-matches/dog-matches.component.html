@@ -1,0 +1,11 @@
+<div class="container" style="margin-top: 1em">
+  <h5>Mis Matches</h5>
+  <span *ngIf="listadoMatches.photos.length >= 1">
+    <img [src]="listadoMatches.photos" class="img_photo_profile"/>
+  </span>
+  <span *ngIf="listadoMatches.photos.length === 0 ">
+    <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+  </span>
+  <div>
+  <h5>{{ listadoMatches.name }}</h5>
+</div>

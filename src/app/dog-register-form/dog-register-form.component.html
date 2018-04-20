@@ -1,102 +1,139 @@
 <div class="container">
-  <form ngForm #dogRegisterForm="ngForm" (ngSubmit)="createNewDog(dogRegisterForm)" validate>
-    <div class="form-group">
-      <label for="inputDogName">Nombre</label>
-      <input 
-        type="text"
-        ngModel 
-        class="form-control"
-        id="inputDogName"
-        name="dogName"
-        #dogName="ngModel" 
-        minlength="2"
-        required
-      >
-      <div *ngIf="dogName.invalid && (dogName.dirty || dogName.touched)"
-      class="alert alert-danger">
-        <div *ngIf="dogName.errors.required">
-          El nombre es obligatorio.
-        </div>
-        <div *ngIf="dogName.errors.minlength">
-          El nombre debe ser de al menos 2 caracteres.
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="radioPurebreed">Raza pura?</label><br />
-      <div class="form-check">
-        <label class="btn btn-secondary" for="radioPurebreed1">
-          <input type="radio" id="radioPurebreed1" ngModel #purebreedRef="ngModel"  name="purebreed" value="'true'" required> Si<br>
-        </label>
-        <label class="btn btn-secondary active" for="radioPurebreed2">
-          <input type="radio" id="radioPurebreed2" ngModel #purebreedRef="ngModel" name="purebreed" value="'false'" checked> No<br>
-        </label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputDescription">Descripción</label>
-      <input 
-        type="text"
-        ngModel 
-        id="inputDescription"
-        name="description"
-        #descriptionRef="ngModel" 
-      >
+  <h2>Nueva Mascota</h2>
+  <div class="row justify-content-center" style="text-align:left;">
+      <div class="col-6">
+        <form ngForm #dogRegisterForm="ngForm" (ngSubmit)="createNewDog(dogRegisterForm)" validate>
+          
+          <div class="form-group">
+            <label for="inputDogName">Nombre</label>
+            <input 
+              type="text"
+              ngModel 
+              class="form-control"
+              id="inputDogName"
+              name="dogName"
+              #dogName="ngModel" 
+              minlength="2"
+              required
+            >
+            <div *ngIf="dogName.invalid && (dogName.dirty || dogName.touched)"
+            class="mensaje-error">
+              <div *ngIf="dogName.errors.required">
+                El nombre es obligatorio.
+              </div>
+              <div *ngIf="dogName.errors.minlength">
+                El nombre debe ser de al menos 2 caracteres.
+              </div>
+            </div>
+          </div>
 
-      <label for="inputDogColor">Color</label>
-      <input 
-        type="text"
-        ngModel 
-        id="inputDogColor"
-        name="dogColor"
-        #dogColorRef="ngModel"
-        required
-      >
+          <div class="form-group">
+              <label for="inputDescription">Descripción</label>
+              <input 
+                type="text"
+                class="form-control"
+                ngModel 
+                id="inputDescription"
+                name="description"
+                #descriptionRef="ngModel" 
+                required>
+              <div class="mensaje-error" *ngIf="descriptionRef.touched && descriptionRef.invalid">Debes introducir la Descripción.</div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label for="radioPurebreed">Raza pura?</label><br />
+                <div class="form-check">
+                  <label class="btn btn-secondary" for="radioPurebreed1">
+                    <input type="radio" id="radioPurebreed1" ngModel #purebreedRef="ngModel"  name="purebreed" value="'true'" required> Si<br>
+                  </label>
+                  <label class="btn btn-secondary active" for="radioPurebreed2">
+                    <input type="radio" id="radioPurebreed2" ngModel #purebreedRef="ngModel" name="purebreed" value="'false'" checked> No<br>
+                  </label>
+                </div>
+                <div class="mensaje-error" *ngIf="purebreedRef.touched && purebreedRef.invalid">Debes marcar si el perro es de raza pura.</div>
+              </div>
+
+              <div class="col">
+                <label for="inputDogBreed">Raza</label>
+                <select     
+                  ngModel 
+                  id="inputDogBreed"
+                  class="form-control"
+                  name="dogBreed"
+                  #dogBreedRef="ngModel" 
+                  required>
+                    <option value="" selected>Selecciona una raza</option>
+                    <option *ngFor="let data of dataDropdown" value= {{data}}>
+                      {{data}}
+                    </option>
+                </select>
+                <div class="mensaje-error" *ngIf="dogBreedRef.touched && dogBreedRef.invalid">Debes seleccionar la raza.</div>
+              </div>  
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label for="inputDogColor">Color</label>
+                <input 
+                  class="form-control"
+                  type="text"
+                  ngModel 
+                  id="inputDogColor"
+                  name="dogColor"
+                  #dogColorRef="ngModel"
+                  required
+                >
+                <div class="mensaje-error" *ngIf="dogColorRef.touched && dogColorRef.invalid">Debes indicar el color.</div>
+              </div>
+
+              <div class="col">
+                <label for="inputDogAge">Edad</label>
+                <input 
+                  class="form-control"
+                  type="number"
+                  ngModel 
+                  id="inputDogAge"
+                  min="0"
+                  step="1"
+                  name="dogAge"
+                  #dogAgeRef="ngModel" 
+                  required>
+                  <div class="mensaje-error" *ngIf="dogAgeRef.touched && dogAgeRef.invalid">Debes indicar la edad.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo -->
+        <div class="form-row">
+            <div class="form-group col-md-9">
+              <label for="inputUserPhoto"><b>Imagen</b></label>
+                <input
+                  type="file"
+                  class="form-control"
+                  ngModel
+                  id="inputDogPhoto"
+                  name="dogPhoto"
+                  #dogPhotoRef="ngModel"
+                  (change)="uploadFile($event)"
+                  />
+            </div>       
+            <div class="form-group col-md-3">
+              <img src="{{photoUrl}}" class="img_photo_profile"/>
+            </div>      
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="dogRegisterForm.invalid">
+              Guardar mascota
+            </button>
+          </div>
+      </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="inputDogAge">Edad</label>
-    <input 
-      type="number"
-      ngModel 
-      id="inputDogAge"
-      min="0"
-      step="1"
-      name="dogAge"
-      #dogAgeRef="ngModel" 
-      required
-    >
-
-    <label for="inputDogBreed">Raza</label>
-    <select     
-      ngModel 
-      id="inputDogBreed"
-      name="dogBreed"
-      #dogBreedRef="ngModel" 
-      required
-    >
-        <option value="" selected>Selecciona una raza</option>
-        <option *ngFor="let data of dataDropdown" value= {{data}}>
-          {{data}}
-        </option>
-    </select>
-    </div>
-    <input
-      type="file"
-      ngModel
-      id="inputDogPhoto"
-      name="dogPhoto"
-      #dogPhotoRef="ngModel"
-      (change)="uploadFile($event)"
-      multiple
-      />
-
-      <img src="{{photoUrl}}" class="img_photo_profile"/>
-    <div class="form-group">
-    <button class="btn btn-success"
-      type="submit"
-      [disabled]="dogRegisterForm.invalid">
-      Guardar mascota
-    </button>
-  </div>
-  </form>
 </div>

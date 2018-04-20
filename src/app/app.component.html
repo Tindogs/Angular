@@ -1,23 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container-fluid" style="margin-top:20px;">
+<div class="container" style="margin-top:20px;">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a routerLink="/login" routerLinkActive="active" class="nav-item nav-link active" id="nav-login" data-toggle="tab" role="tab" aria-controls="nav-login" aria-selected="true">Login</a>
       <a routerLink="/new_user" routerLinkActive="active" class="nav-item nav-link" id="nav-new-user" data-toggle="tab"  role="tab" aria-controls="nav-new-user" aria-selected="false">Nuevo Usuario</a>
-      <a routerLink="/dogs_match/5ad4d2fcd8f8a70b0c017dfc" routerLinkActive="active" class="nav-item nav-link" id="nav-match" data-toggle="tab" role="tab" aria-controls="nav-match" aria-selected="false">Match Dog</a>
     </div>
   </nav>
 
   <div style="text-align:center">
-    <h1>
-      Welcome to {{ title }}!
-    </h1>
-    <br>
     <router-outlet></router-outlet>
-    <!--<user-login></user-login>
-    <user-signup></user-signup>
-    <dogs-register></dogs-register> -->
-    <img width="300" alt="Angular Logo" src="../assets/Appvengers.png">
   </div>
 </div>
 

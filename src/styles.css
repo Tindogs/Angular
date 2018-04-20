@@ -21,3 +21,6 @@ input.ng-touched.ng-valid {
     font-size: 80%;
 }
 
+h2 {
+    margin:1em;
+}

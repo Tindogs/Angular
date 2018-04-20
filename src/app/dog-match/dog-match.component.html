@@ -1,3 +1,4 @@
+<h2>Mascotas cercanas</h2>
 <div>  
   <ng-template DogToMatch>
     <dog-matched [dogsToMatch]="dogsToMatch"></dog-matched>
@@ -7,4 +8,7 @@
   <button (click)="onDislike($event)" class="btn btn-danger">No me Gusta <i class="fa fa-thumbs-down fa-lg"></i></button>
   <button (click)="onDoubt($event)" class="btn btn-warning">No me Decido</button>
   <button (click)="onLike($event)" class="btn btn-success">Me Gusta <i class="fa fa-thumbs-up fa-lg"></i></button>
+</div>
+<div>
+  <dog-matches [listadoMatches]="dogMatched"></dog-matches>
 </div>

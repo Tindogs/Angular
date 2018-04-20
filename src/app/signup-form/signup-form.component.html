@@ -1,5 +1,6 @@
-<div class="container" style="text-align:left;">
-  <div class="row justify-content-md-center">
+<div class="container">
+  <h2>Nuevo Usuario</h2>
+  <div class="row justify-content-center" style="text-align:left;">
     <div class="col-6">
       <form ngForm #signUpForm="ngForm" (ngSubmit)="userSignUp(signUpForm)">
         
@@ -21,7 +22,7 @@
                 Debes introducir el Nombre.
               </div>
               <div *ngIf="firstNameRef.errors.minlength">
-                El nombre debe contener al menos 4 caracteres.
+                El nombre debe contener al menos 2 caracteres.
               </div>
             </div>
         </div>
@@ -92,7 +93,7 @@
 
         <!-- Photo -->
         <div class="form-row">
-          <div class="form-group col-md-9">
+          <div class="form-group col-md-8">
             <label for="inputUserPhoto"><b>Imagen</b></label>
               <input
                 type="file"

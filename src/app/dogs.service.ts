@@ -74,7 +74,7 @@ export class DogsService {
     return this.dogs
   }
 
-  likeOtherDog(userId: string, dogId: string, otherDogId: string, like: any): Observable<Dog> {
+  likeOtherDog(userId: string, dogId: string, otherDogId: string, like: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'token': localStorage.getItem('token')
@@ -88,7 +88,7 @@ export class DogsService {
                     if(respuesta.success == true) {
                       console.log("Like From Others")
                       console.log(respuesta)
-                      return Dog.newFromJson(respuesta.result);
+                      return respuesta.result.match;
                     } 
                 })
   }

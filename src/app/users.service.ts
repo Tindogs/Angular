@@ -22,12 +22,11 @@ export class UsersService {
     return this._http
           .post(`${environment.apiURL}/users/authenticate/`, login)
           .map((response: Response) => {
-            console.log("UsersService:: response" + response['result']);
+            //console.log("UsersService:: response" + response['result']);
             console.log("UsersService:: response" + JSON.stringify(response.json()));
             this.registerWebToken(response.json().token)
             this.registerId(response.json().result._id)
-            //this.registerDogId(response.json().result.dogs[0]._id)
-            return  User.newFromJson((response.json().result));
+            return User.newFromJson((response.json().result));
           });
     
   }
