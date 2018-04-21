@@ -1,0 +1,29 @@
+ul {
+    float: right;
+    margin-right: 5em;
+}
+li {
+    list-style: none;
+    display: inline-block;
+    margin-top: 0.7em;
+}
+a {
+    color: purple;
+}
+a:hover {
+    color: gray;
+}
+.container-fluid {
+    background-color: white;
+}
+.cabecera {
+    background-color: lightgrey;
+    border-bottom: 1px solid indianred;
+    padding-top: 0.5em;
+    padding-bottom: 0.3em;
+}
+
+.logocabecera {
+    width: 220px;
+    margin-left: 5em;
+}

@@ -91,7 +91,7 @@ export class DogsService {
                 })
   }
 
-  getDogMatches(dogId: string): Observable<any> {
+  getDogMatches(dogId: string): Observable<any[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'token': this._users.getUserToken()
@@ -102,7 +102,7 @@ export class DogsService {
     console.log("PETICION API MATCHES");
     return this._http.get<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/matches`, httpOptions)
               .map(response => {
-                return response.result;
+                return response.result[0];
               })
   }
 

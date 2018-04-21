@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router'
-
-import { DogsService } from '../dogs.service'
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Dog } from '../model/dog'
 import { Query } from '../model/query'
@@ -9,6 +9,9 @@ import { Query } from '../model/query'
 import { DogToMatchDirective } from '../dog-to-match.directive';
 import { DogMatchedComponent } from '../dog-matched/dog-matched.component';
 import { UsersService } from '../users.service';
+import { DogsService } from '../dogs.service'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'dog-match',
@@ -25,7 +28,8 @@ export class DogMatchComponent implements OnInit {
   userId: string;
   currentDogIndex: number = -1;
   dogMatched: Dog;
-  dogMatchedList: Dog[];
+  dogMatchedList$: Observable<Dog[]>;
+  dogServiceSubscription: Subscription;
 
   @ViewChild(DogToMatchDirective) dogToMatchHost: DogToMatchDirective;
 
@@ -33,17 +37,18 @@ export class DogMatchComponent implements OnInit {
     private _userService: UsersService,
     private _dogsService: DogsService,
     private route: ActivatedRoute,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private _modalService: NgbModal
   ) { }
 
   ngOnInit() {
     this.userId = this._userService.getUserId();
     this.dog_id = this.route.snapshot.paramMap.get('id');
-    console.log("ID DE MI PERRO")
-    console.log(this.dog_id)
+    console.log("ID DE MI PERRO");
+    console.log(this.dog_id);
 
     // Suscripción al Servicio Search
-    this._dogsService.getDogSearch(this.dog_id)
+    this.dogServiceSubscription = this._dogsService.getDogSearch(this.dog_id)
     .subscribe((dogsToMatch) => {
       this.dogsToMatch = dogsToMatch;
       console.log(this.dogsToMatch)
@@ -51,12 +56,12 @@ export class DogMatchComponent implements OnInit {
     });
 
     // Suscripción al Servicio Matches
-    this._dogsService.getDogMatches(this.dog_id)
-    .subscribe((dogMatchedList) => {
-      this.dogMatchedList = dogMatchedList[0];
-      console.log(this.dogMatchedList)
-    });
+    this.dogMatchedList$ = this._dogsService.getDogMatches(this.dog_id);
 
+  }
+
+  ngOnDestroy() {
+    this.dogServiceSubscription.unsubscribe();
   }
 
 
@@ -78,12 +83,15 @@ export class DogMatchComponent implements OnInit {
     const dislike = {
       "like" : "false"
     }
-    this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, dislike)
+    this.dogServiceSubscription = this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, dislike)
     .subscribe((otherDog) => {
       console.log("PERRO DESLIKEADO");
       console.log(otherDog);
-      this.loadNextDog();
+      // Actualizo los matches
+      this.dogMatchedList$ = this._dogsService.getDogMatches(this.dog_id);
     })
+    
+    this.loadNextDog();
     
   }
 
@@ -91,28 +99,29 @@ export class DogMatchComponent implements OnInit {
     this.loadNextDog()
   }
 
-  onLike($event) {
+  onLike($event, dogMatchModal) {
     const like = {
       "like" : "true"
     }
 
-    this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, like)
+    this.dogServiceSubscription = this._dogsService.likeOtherDog(this.userId, this.dog_id, this.otherDog.id, like)
     .subscribe((dogMatched) => {
       if (dogMatched.match == true) {
         this.dogMatched = dogMatched.dog;
-        alert("Has hecho Match con: " + dogMatched.dog.name);
+        this.openModal(dogMatchModal);
+        //alert("Has hecho Match con: " + dogMatched.dog.name);
+        // Actualizo los matches
+      this.dogMatchedList$ = this._dogsService.getDogMatches(this.dog_id);
       }
-      // this.onSetDog(this.dogMatched);
+
       this.loadNextDog();
       
     })
 
   }
 
-  // onSetDog(dog: Dog){
-  //   console.log("DOG SET");
-  //   this.dog = dog;
-  //   console.log(this.dog);
-  // }
+  openModal(dogMatchModal){
+    this._modalService.open(dogMatchModal, { centered: true })
+  }
 
 }

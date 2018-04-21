@@ -1,11 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container" style="margin-top:20px;">
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a routerLink="/login" routerLinkActive="active" class="nav-item nav-link active" id="nav-login" data-toggle="tab" role="tab" aria-controls="nav-login" aria-selected="true">Login</a>
-      <a routerLink="/new_user" routerLinkActive="active" class="nav-item nav-link" id="nav-new-user" data-toggle="tab"  role="tab" aria-controls="nav-new-user" aria-selected="false">Nuevo Usuario</a>
+<div class="container-fluid">
+<header>
+  <div class="row cabecera">
+    <div class="col logo">
+        <img alt="Tindogs" class="logocabecera" src="../assets/Tindogs2.png">
     </div>
-  </nav>
+    <div class="col">
+        <ul>
+          <li class="nav-item">
+            <a routerLink="/login" routerLinkActive="active" class="nav-link" href="#">Login</a>
+          </li>
+        </ul>
+    </div>
+   
+  </div>
+    
+</header>
 
   <div style="text-align:center">
     <router-outlet></router-outlet>

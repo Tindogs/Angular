@@ -1,5 +1,5 @@
-<div class="container" style="margin-top: 1em">
-  <h5>Mis Matches</h5>
+<div class="container" style="margin-top: 1.5em">
+  <h4>Mis Matches</h4>
   <ul>
     <li *ngFor="let dog of listadoMatches" class="dog_card">
         <span *ngIf="dog.img_dog_matched.length >= 1">
@@ -9,8 +9,7 @@
           <img src="./../assets/No_Image.png" class="img_photo_profile"/>
         </span>
         <h5>{{ dog.name_dog_matched }}</h5>
+        <button (click)="DogDetail(dog)" class="btn btn-primary">Ver Perfil</button>
     </li>
   </ul>
-  
-  
 </div>
