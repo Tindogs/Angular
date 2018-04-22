@@ -1,7 +1,19 @@
 <div class="container">
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div class="col-md-auto">
+      <h2>Mascotas cercanas</h2>
+    </div>
+    <div class="col">
+      <ul>
+        <li class="menuLateral">
+          <a routerLink="/user_dashboard" routerLinkActive="active" class="nav-link" href="#">Volver al Perfil</a>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="row">
     <div class="col"></div>
-
     <div class="col-md-auto">
       <span *ngIf="dog.photos.length >= 1">
           <img [src]="dog.photos[0]" class="img_photo_match"/>

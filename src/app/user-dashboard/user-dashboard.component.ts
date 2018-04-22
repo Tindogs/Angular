@@ -67,7 +67,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
   }
 
   dogMatch(dog){
-    alert("Vamos a buscarle Novia a: " + dog.name);
+    //alert("Vamos a buscarle Novia a: " + dog.name);
     this.router.navigate([`/dogs_match/${dog.id}`]);
   }
 
@@ -78,10 +78,10 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
           console.log(data.coords);
           user.coordinates = [data.coords.latitude, data.coords.longitude];
           // Llamo al servicio updateUser y me suscribo pasando las coordinates
-          // this.userServiceSubscription = this._usersService.updateUser(user)
-          // .subscribe((user) => {
-          //   this.user = user;
-          // });
+          this.userServiceSubscription = this._usersService.updateUser(user)
+          .subscribe((user) => {
+            this.user = user;
+          });
         },
         (error) => {
           console.log(error);

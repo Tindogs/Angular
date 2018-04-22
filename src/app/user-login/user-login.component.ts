@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Login } from '../model/login';
 import { User } from '../model/user';
 import { UsersService } from '../users.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'user-login',
@@ -14,19 +16,32 @@ import { UsersService } from '../users.service';
 })
 export class UserLoginComponent {
 
-  
+  user: User;
 
   constructor( private _usersService: UsersService,
-               private router: Router) { }
+               private router: Router,
+              private _modalService: NgbModal) { }
 
-  doLogin(login: Login): void {
-    console.log("UserLoginComponent:: doLogin" + login);
+  doLogin(login: Login, loginErrorModal, loginOkModal): void {
      this._usersService.loginUser(login)
-        .subscribe((user) => {
-        //alert('El contacto se ha creado correctamente :-)');    
-        console.log(user)    
-        this.router.navigate([`/user_dashboard/`]);
+      .subscribe(
+        user => { 
+          console.log(user);
+          this.user = user;
+          this.openloginOkModal(loginOkModal);
+        },
+        err => {
+          this.openModal(loginErrorModal);
+        }
+      );
+  }
 
-      });
+  openloginOkModal(loginOkModal) {
+    this._modalService.open(loginOkModal, { centered: true });
+    this.router.navigate([`/user_dashboard/`]);
+  }
+
+  openModal(loginErrorModal) {
+    this._modalService.open(loginErrorModal, { centered: true });
   }
 }
