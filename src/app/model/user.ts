@@ -11,7 +11,7 @@ export class User {
         public password: string,
         public coordinates: number[],
         public photo: string,
-        public dogs: Dog[]
+        public dogs: Dog[],
      ) {}
 
     static newFromJson(json: any): User {
@@ -24,7 +24,7 @@ export class User {
             json.password,
             json.coordinates,
             json.photo,
-            Dog.newCollectionFromJson(json.dogs)
+            Dog.newCollectionFromJson(json.dogs),
         );
     }
 }

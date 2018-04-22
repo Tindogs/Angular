@@ -1,28 +1,61 @@
-<form ngForm #loginForm="ngForm" (ngSubmit)="userLogin(loginForm)">
+<div class="container" >
+  <div class="row">
+    <div class="col imageLogin">
+      <img alt="Tindogs" src="../assets/perro.jpg">
+    </div>
+  </div>
+  <div class="row justify-content-center" style="text-align:left;">
+    <div class="col-4">
+      <form ngForm #loginForm="ngForm" (ngSubmit)="userLogin(loginForm)">
+        <div class="form-group">
+          <label for="inputUser">Usuario</label>
+          <input 
+            class="form-control"
+            type="text"
+            ngModel 
+            id="inputUser"
+            name="email"
+            #userRef="ngModel" 
+            required [pattern]="emailPattern"
+            >
+          <div *ngIf="userRef.invalid && userRef.touched"
+                class="mensaje-error">
+              <div *ngIf="userRef.errors.required">
+                Debes introducir un email.
+              </div>
+              <div *ngIf="userRef.errors.pattern">
+                Formato de email incorrecto.
+              </div>
+          </div>
+        </div>
 
-<label for="inputUser">Usuario</label>
-<input 
-  type="text"
-  ngModel 
-  id="inputUser"
-  name="email"
-  #userRef="ngModel" 
-  required
->
+        <div class="form-group">
+          <label for="inputPass">Password</label>
+          <input 
+            class="form-control"
+            type="password"
+            name="password"
+            ngModel
+            id="inputPass"
+            #passRef="ngModel"
+            required
+          >
+          <div class="mensaje-error" *ngIf="passRef.touched && passRef.invalid">Debes introducir la Contraseña.</div>
+        </div>
 
-<label for="inputPass">Password</label>
-<input 
-  type="password"
-  name="password"
-  ngModel
-  id="inputPass"
-  #passRef="ngModel"
-  required
->
+        <div class="form-group">
+          <button 
+            class="btn btn-primary btn-block"
+            type="submit">
+            Login
+          </button>
+        </div>
+      </form>
 
-<button 
-  type="submit">
-  Login
-</button>
-
-</form>
+      <div style="text-align: center;">
+        <h6>¿Aún no te has registrado?</h6>
+        <h5><a routerLink="/new_user" class="badge badge-secondary">Regístrate</a></h5>
+      </div>
+    </div>
+  </div>
+</div>

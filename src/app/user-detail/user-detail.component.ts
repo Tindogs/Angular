@@ -1,32 +1,32 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
-
+import { ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../users.service'
 import { User } from '../model/user';
 
 @Component({
-  selector: 'app-user-detail',
+  selector: 'user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
 
-
   @Output() addNewDog = new EventEmitter<any>();
+  @Output() updateUser = new EventEmitter<any>();
   @Input() user : User;
 
-  photo_user: string = "./../assets/No_Image.png";
-  constructor() { }
+  constructor(
+  ) { }
     
   ngOnInit() {
-    if(this.user.photo) {
-        this.photo_user = this.user.photo
-    }
   }
 
   newDogClick($event) {
     this.addNewDog.emit()    
+  }
+
+  updateUserClick($event) {
+    this.updateUser.emit()  
   }
 
 }

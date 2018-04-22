@@ -1,4 +1,30 @@
-<div>
-  <ng-template appDogToMatch></ng-template>
+<h2>Mascotas cercanas a: {{dog}}</h2>
+<div>  
+  <ng-template DogToMatch>
+    <dog-matched [dogsToMatch]="dogsToMatch"></dog-matched>
+  </ng-template>
 </div>
-<div><button (click)="onDislike($event)" class="btn btn-danger"> Dislike</button><button (click)="onLike($event)" class="btn btn-success">Like</button></div>
+<div>
+  <button (click)="onDislike($event)" class="btn btn-danger">No me Gusta <i class="fa fa-thumbs-down fa-lg"></i></button>
+  <button (click)="onDoubt($event)" class="btn btn-warning">No me Decido</button>
+  <button (click)="onLike($event, dogMatchModal)" class="btn btn-success">Me Gusta <i class="fa fa-thumbs-up fa-lg"></i></button>
+</div>
+
+<div>
+  <dog-matches [listadoMatches]="dogMatchedList$ | async"></dog-matches>
+</div>
+
+<ng-template #dogMatchModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Has hecho Match con {{dogMatched.name}}!!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Dicha mascota se incorporará a tu listado de Matches y podrás ver su perfil</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Ok</button>
+    </div>
+  </ng-template>

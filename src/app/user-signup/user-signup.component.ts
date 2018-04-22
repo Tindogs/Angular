@@ -17,9 +17,9 @@ export class UserSignupComponent {
     private _router: Router) { }
 
   newSubmit(user: User): void {
+    console.log("Usuario creado en NewSubmit: " + user)
     this._usersService.registerNewUser(user)
     .subscribe((user) => {
-      console.log(user)
       alert('El contacto se ha creado correctamente :-)');
       this._router.navigate([`/new_dog/${user.id}`]);
   });

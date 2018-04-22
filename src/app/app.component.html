@@ -1,19 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav>
-      <a routerLink="/login" routerLinkActive="active">Login</a>
-      <a routerLink="/new_user" routerLinkActive="active">Nuevo usuario</a>
-      <a routerLink="/dogs_match/5aa9b60ccc9b4e411d36abac" routerLinkActive="active">Match dog(prueba)</a>
-    </nav>
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <br>
-  <router-outlet></router-outlet>
-  <!--<user-login></user-login>
-  <user-signup></user-signup>
-  <dogs-register></dogs-register> -->
-  <img width="300" alt="Angular Logo" src="../assets/Appvengers.png">
-</div>
+<div class="container-fluid">
+<header>
+  <div class="row cabecera">
+    <div class="col logo">
+        <img alt="Tindogs" class="logocabecera" src="../assets/Tindogs2.png">
+    </div>
+    <div class="col">
+        <ul>
+          <li class="nav-item">
+            <a routerLink="/login" routerLinkActive="active" class="nav-link" href="#">Login</a>
+          </li>
+        </ul>
+    </div>
+   
+  </div>
+    
+</header>
 
+  <div style="text-align:center">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 

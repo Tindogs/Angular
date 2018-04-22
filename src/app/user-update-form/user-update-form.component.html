@@ -1,13 +1,13 @@
-<div class="container">
-  <h2>Nuevo Usuario</h2>
-  <div class="row justify-content-center" style="text-align:left;">
+<div class="container" style="text-align:left;">
+  <div class="row justify-content-md-center">
     <div class="col-6">
-      <form ngForm #signUpForm="ngForm" (ngSubmit)="userSignUp(signUpForm)">
+      <form ngForm #updateForm="ngForm" (ngSubmit)="updateUser(updateForm)">
         
         <!-- Firstname -->
         <div class="form-group">
           <label for="inputFirstName"><b>Nombre</b></label>
           <input 
+            placeholder="{{ user.first_name }}"
             type="text"
             class="form-control"
             ngModel 
@@ -22,7 +22,7 @@
                 Debes introducir el Nombre.
               </div>
               <div *ngIf="firstNameRef.errors.minlength">
-                El nombre debe contener al menos 2 caracteres.
+                El nombre debe contener al menos 4 caracteres.
               </div>
             </div>
         </div>
@@ -31,6 +31,7 @@
         <div class="form-group">
           <label for="inputLastName"><b>Apellidos</b></label>
           <input 
+            placeholder="{{ user.last_name }}"
             type="text"
             class="form-control"
             ngModel 
@@ -40,33 +41,12 @@
             required>
           <div class="mensaje-error" *ngIf="lastNameRef.touched && lastNameRef.invalid">Debes introducir los Apellidos.</div>
         </div>
-
-        <!-- Email -->
-        <div class="form-group">
-          <label for="inputEmail"><b>Correo Electrónico</b></label>
-          <input 
-            type="email"
-            class="form-control"
-            ngModel
-            name="email"
-            id="inputEmail"
-            #emailRef="ngModel"
-            required [pattern]="emailPattern">
-            <div *ngIf="emailRef.invalid && emailRef.touched"
-            class="mensaje-error">
-              <div *ngIf="emailRef.errors.required">
-                Debes introducir un email.
-              </div>
-              <div *ngIf="emailRef.errors.pattern">
-                Formato de email incorrecto.
-              </div>
-            </div>
-        </div> 
-
+ 
         <!-- User Name -->
         <div class="form-group">
           <label for="inputUserName"><b>Usuario</b></label>
-          <input 
+          <input
+            placeholder="{{ user.username }}"
             type="text"
             class="form-control"
             ngModel 
@@ -77,23 +57,9 @@
           <div class="mensaje-error" *ngIf="userRef.touched && userRef.invalid">Debes introducir el Usuario.</div>
         </div>
 
-        <!-- Password -->
-        <div class="form-group">
-        <label for="inputPass"><b>Contraseña</b></label>
-          <input 
-            type="password"
-            class="form-control"
-            ngModel
-            name="password"
-            id="inputPass"
-            #passRef="ngModel"
-            required>
-          <div class="mensaje-error" *ngIf="passRef.touched && passRef.invalid">Debes introducir la Contraseña.</div>
-        </div>
-
         <!-- Photo -->
         <div class="form-row">
-          <div class="form-group col-md-8">
+          <div class="form-group col-md-6">
             <label for="inputUserPhoto"><b>Imagen</b></label>
               <input
                 type="file"
@@ -106,16 +72,26 @@
                 />
           </div>       
           <div class="form-group col-md-3">
+              <h6>Nueva Imagen</h6>
             <img src="{{photoUrl}}" class="img_photo_profile"/>
-          </div>      
+          </div>  
+          <div class="form-group col-md-3">
+            <h6>Imagen Actual</h6>
+            <span *ngIf="user.photo">
+              <img [src]="user.photo" class="img_photo_profile"/>
+            </span>
+            <span *ngIf="user.photo === undefined || user.photo === '' ">
+              <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+            </span>
+          </div>    
         </div>
 
         <div class="form-group">
           <button 
             type="submit"
             class="btn btn-primary btn-block"
-            [disabled]="signUpForm.invalid">
-            SignUp
+            [disabled]="updateForm.invalid">
+            Update User
           </button>
         </div>
         

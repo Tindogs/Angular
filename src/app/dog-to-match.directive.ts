@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appDogToMatch]'
+  selector: '[DogToMatch]'
 })
 export class DogToMatchDirective {
 

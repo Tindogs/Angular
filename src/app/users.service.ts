@@ -22,11 +22,11 @@ export class UsersService {
     return this._http
           .post(`${environment.apiURL}/users/authenticate/`, login)
           .map((response: Response) => {
-            console.log("UsersService:: response" + response['result']);
+            //console.log("UsersService:: response" + response['result']);
             console.log("UsersService:: response" + JSON.stringify(response.json()));
             this.registerWebToken(response.json().token)
             this.registerId(response.json().result._id)
-            return  User.newFromJson((response.json().result));
+            return User.newFromJson((response.json().result));
           });
     
   }
@@ -34,12 +34,9 @@ export class UsersService {
   registerNewUser(user: User): Observable<User>{
     return this._http
                 .post(`${environment.apiURL}/users/register/`, user)
-                .map((respuesta: Response) => {
-                  
+                .map((respuesta: Response) => { 
                   this.registerWebToken(respuesta.json().token)
-                  
                   return User.newFromJson(respuesta.json().result)
-                  
                 })
   }
 
@@ -57,6 +54,24 @@ export class UsersService {
     return this.user
   }
 
+  updateUser(user: User): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': this.getUserToken()
+      })
+    };
+    console.log("DATOS DESDE EL SERVICIO")
+    console.log(user)
+    const id = this.getUserId();
+    this.user = this._httpClient
+              .put<ResultApi>(`${environment.apiURL}/users/${id}`, user, httpOptions)
+              .map(response => {
+                return User.newFromJson(response.result)
+              })
+    return this.user
+  }
+
+
   registerWebToken(token) {
     localStorage.setItem('token',token)
   }
@@ -65,12 +80,20 @@ export class UsersService {
     localStorage.setItem('user_id',id)
   }
 
+  registerDogId(dog_id) {
+    localStorage.setItem('dog_id', dog_id)
+  }
+
   getUserId() {
     return localStorage.getItem('user_id');
   }
 
   getUserToken() {
     return localStorage.getItem('token')
+  }
+
+  getDogId() {
+    return localStorage.getItem('dog_id');
   }
 
   /*getUserObject() {

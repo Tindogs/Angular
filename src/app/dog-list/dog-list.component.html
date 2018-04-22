@@ -1,7 +1,108 @@
-<header>
-  <h4>Listado de Perretes</h4>
-</header>
-<img [src]="photo_user" class="img_photo_profile"/>
-<ul>
-  <li *ngFor="let perretes of listado"><strong>{{ perretes.name }}</strong>, {{ perretes.age }}, {{ perretes.description }}</li>
-</ul>
+<div>
+  <h4>Mis Perretes</h4>
+</div>
+
+<div>
+  <ul>
+    <li *ngFor="let dog of listado" class="dog_card" >
+        <span *ngIf="dog.photos.length >= 1">
+          <img [src]="dog.photos" class="img_photo_profile"/>
+        </span>
+        <span *ngIf="dog.photos.length === 0 ">
+          <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+        </span>
+        <div>
+        <h5>{{ dog.name }}</h5>
+        <button (click)="DogSettings(dog, dogModal)" class="btn btn-primary">Ajustes</button>
+        <button (click)="MatchDog(dog)" class="btn btn-primary">Match</button>
+        <!-- <p>{{ dog.age }}</p> 
+        <p>{{ dog.description }}</p> -->
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Modal -->
+<ng-template #dogModal let-close="close" let-dismiss="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Query Settings of: {{ dog.name }}</h4>
+  </div>
+  <div class="modal-body">
+    <form ngForm #queryForm="ngForm" (ngSubmit)="dogQuery(queryForm)">
+        <!-- DOG AGE-->
+        <div class="form-group">  
+          <label for="inputDogAge">Edad:</label>
+          <input class="form-control"
+            type="number"
+            ngModel 
+            id="inputDogAge"
+            min="0"
+            step="1"
+            name="queryage"
+            #queryageRef="ngModel" 
+            required
+          >
+          <div *ngIf="queryageRef.invalid && queryageRef.touched"
+            class="mensaje-error">
+              <div *ngIf="queryageRef.errors.required">
+                Debes introducir la Edad del perro a buscar.
+              </div>
+            </div>
+        </div>
+        <!-- MAX KMS-->
+        <div class="form-group">
+          <label for="inputDogKms">Max Kms:</label>
+          <select class="form-control form-control-sm"
+            ngModel 
+            id="inputDogKms"
+            name="querymaxkms"
+            #querymaxkmsRef="ngModel" 
+            required>
+            <option value="" selected>0</option>
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+            <option>200</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="queryreproductive">Raza pura?</label><br />
+            <label class="btn btn-secondary">
+              <input type="radio" ngModel #queryreproductiveRef="ngModel"  name="queryreproductive" value="true"> Si<br>
+            </label>
+            <label class="btn btn-secondary active">
+              <input type="radio" ngModel #queryreproductiveRef="ngModel" name="queryreproductive" value="false" checked> No<br>
+            </label>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDogBreed">Raza</label>
+          <select class="form-control form-control-sm"  
+            ngModel 
+            id="inputDogBreed"
+            name="querybreed"
+            #querybreedRef="ngModel" 
+            required
+            >
+              <option value="" selected>Selecciona una raza</option>
+              <option *ngFor="let data of breeds" value= {{data}}>
+                {{data}}
+              </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" 
+            class="btn btn-primary"
+            [disabled]="queryForm.invalid"
+            >Save changes</button>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+      
+    <button type="button" class="btn btn-secondary" (click)="close('Close click')">Close</button>
+  </div>
+</ng-template>

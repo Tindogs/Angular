@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,8 +30,12 @@ import { DogsService } from './dogs.service'
 import { UploadsService } from './uploads.service';
 
 import { DogDetailComponent } from './dog-detail/dog-detail.component';
-import { DogMatchedComponent } from './dog-matched/dog-matched.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 import { DogToMatchDirective } from './dog-to-match.directive';
+import { DogMatchedComponent } from './dog-matched/dog-matched.component';
+import { DogMatchesComponent } from './dog-matches/dog-matches.component';
+import { DogDashboardComponent } from './dog-dashboard/dog-dashboard.component';
 
 
 
@@ -50,14 +55,19 @@ import { DogToMatchDirective } from './dog-to-match.directive';
     DogMatchComponent,
     DogListComponent,
     DogDetailComponent,
+    UserUpdateComponent,
+    UserUpdateFormComponent,
+    DogToMatchDirective,
     DogMatchedComponent,
-    DogToMatchDirective
+    DogMatchesComponent,
+    DogDashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     HttpModule,
+    NgbModule.forRoot(),
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
@@ -66,6 +76,7 @@ import { DogToMatchDirective } from './dog-to-match.directive';
   providers: [UsersService,
               DogsService,
               UploadsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DogMatchedComponent]
 })
 export class AppModule { }
