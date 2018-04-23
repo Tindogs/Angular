@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Login } from '../model/login';
 import { User } from '../model/user';
 import { UsersService } from '../users.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -17,6 +17,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class UserLoginComponent {
 
   user: User;
+  modal: NgbModalRef;
 
   constructor( private _usersService: UsersService,
                private router: Router,
@@ -37,7 +38,13 @@ export class UserLoginComponent {
   }
 
   openloginOkModal(loginOkModal) {
-    this._modalService.open(loginOkModal, { centered: true });
+    this.modal = this._modalService.open(loginOkModal, { centered: true });
+    //    this.router.navigate([`/user_dashboard/`]);
+    
+  }
+
+  closeloginOkModal(){
+    this.modal.close();
     this.router.navigate([`/user_dashboard/`]);
   }
 

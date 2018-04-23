@@ -15,4 +15,8 @@ export class DogMatchesComponent implements OnInit {
   ngOnInit() {
   }
 
+  DogDetail(dog){
+    console.log(dog);
+  }
+
 }

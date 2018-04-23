@@ -8,7 +8,7 @@ li {
     margin-top: 0.7em;
 }
 a {
-    color: purple;
+    color: #a3195b;
 }
 a:hover {
     color: gray;
@@ -17,13 +17,13 @@ a:hover {
     background-color: white;
 }
 .cabecera {
-    background-color: lightgrey;
-    border-bottom: 1px solid indianred;
+    background-color: #ead3dc;
+    border-bottom: 1px solid #a3195b;
     padding-top: 0.5em;
     padding-bottom: 0.3em;
 }
 
 .logocabecera {
-    width: 220px;
+    width: 240px;
     margin-left: 5em;
 }

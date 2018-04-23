@@ -25,14 +25,15 @@
 <!-- Modal -->
 <ng-template #dogModal let-close="close" let-dismiss="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Query Settings of: {{ dog.name }}</h4>
+    <h4 class="modal-title">Preferencias de búsqueda de: {{ dog.name }}</h4>
   </div>
   <div class="modal-body">
     <form ngForm #queryForm="ngForm" (ngSubmit)="dogQuery(queryForm)">
         <!-- DOG AGE-->
         <div class="form-group">  
-          <label for="inputDogAge">Edad:</label>
-          <input class="form-control"
+          <label for="inputDogAge">Edad</label>
+          <input class="form-control form-control-sm"
+            placeholder="{{dog.query.age}}"
             type="number"
             ngModel 
             id="inputDogAge"
@@ -51,14 +52,14 @@
         </div>
         <!-- MAX KMS-->
         <div class="form-group">
-          <label for="inputDogKms">Max Kms:</label>
+          <label for="inputDogKms">Distancia</label>
           <select class="form-control form-control-sm"
-            ngModel 
+            ngModel
             id="inputDogKms"
             name="querymaxkms"
             #querymaxkmsRef="ngModel" 
             required>
-            <option value="" selected>0</option>
+            <option value="" selected>{{dog.query.max_kms}} (Actual)</option>
             <option>10</option>
             <option>25</option>
             <option>50</option>
@@ -68,12 +69,17 @@
         </div>
 
         <div class="form-group">
-          <label for="queryreproductive">Raza pura?</label><br />
+          <span *ngIf="dog.query.reproductive === true">
+              <label for="queryreproductive">Apareamiento (Actual: Sí)</label><br />
+          </span>
+          <span *ngIf="dog.query.reproductive === false">
+              <label for="queryreproductive">Apareamiento (Actual: No)</label><br />
+          </span>
             <label class="btn btn-secondary">
-              <input type="radio" ngModel #queryreproductiveRef="ngModel"  name="queryreproductive" value="true"> Si<br>
+              <input type="radio" ngModel #queryreproductiveRef="ngModel"  name="queryreproductive" value="true"> Si
             </label>
-            <label class="btn btn-secondary active">
-              <input type="radio" ngModel #queryreproductiveRef="ngModel" name="queryreproductive" value="false" checked> No<br>
+            <label class="btn btn-secondary">
+              <input type="radio" checked ngModel #queryreproductiveRef="ngModel" name="queryreproductive" value="false"> No
             </label>
         </div>
 
@@ -86,10 +92,10 @@
             #querybreedRef="ngModel" 
             required
             >
-              <option value="" selected>Selecciona una raza</option>
-              <option *ngFor="let data of breeds" value= {{data}}>
-                {{data}}
-              </option>
+            <option value="" selected>{{dog.query.breed}} (Actual)</option>
+            <option *ngFor="let data of breeds" value= {{data}}>
+              {{data}}
+            </option>
           </select>
         </div>
 
@@ -97,12 +103,12 @@
           <button type="submit" 
             class="btn btn-primary"
             [disabled]="queryForm.invalid"
-            >Save changes</button>
+            >Guardar preferencias</button>
         </div>
     </form>
   </div>
   <div class="modal-footer">
       
-    <button type="button" class="btn btn-secondary" (click)="close('Close click')">Close</button>
+    <button type="button" class="btn btn-secondary" (click)="close('Close click')">Cerrar</button>
   </div>
 </ng-template>

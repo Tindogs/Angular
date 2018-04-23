@@ -20,8 +20,10 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
-      <p>Dicha mascota se incorporará a tu listado de Matches y podrás ver su perfil</p>
+    <div class="modal-body" style="text-align: center">
+      <img [src]="dogMatched.photos[0]" class="img_photo_modal"/>
+      <br>
+      <p>{{dogMatched.name}} se incorporará a tu listado de Matches y podrás ver su perfil</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="c('Close click')">Ok</button>
