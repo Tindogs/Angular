@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { environment } from '../environments/environment';
 
 import { Login } from './model/login';
@@ -27,9 +28,10 @@ export class UsersService {
             this.registerWebToken(response.json().token)
             this.registerId(response.json().result._id)
             return User.newFromJson((response.json().result));
-          });
+          })
     
   }
+
 
   registerNewUser(user: User): Observable<User>{
     return this._http

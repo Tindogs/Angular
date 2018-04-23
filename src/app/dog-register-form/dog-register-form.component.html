@@ -1,5 +1,18 @@
 <div class="container">
-  <h2>Nueva Mascota</h2>
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div class="col-md-auto">
+      <h2>Nueva Mascota</h2>
+    </div>
+    <div class="col">
+      <ul>
+        <li class="menuLateral">
+          <a routerLink="/user_dashboard" routerLinkActive="active" class="nav-link" href="#">Volver al Perfil</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="row justify-content-center" style="text-align:left;">
       <div class="col-6">
         <form ngForm #dogRegisterForm="ngForm" (ngSubmit)="createNewDog(dogRegisterForm)" validate>

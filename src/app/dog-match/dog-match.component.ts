@@ -113,10 +113,9 @@ export class DogMatchComponent implements OnInit {
         // Actualizo los matches
       this.dogMatchedList$ = this._dogsService.getDogMatches(this.dog_id);
       }
-
-      this.loadNextDog();
-      
     })
+
+    this.loadNextDog();
 
   }
 

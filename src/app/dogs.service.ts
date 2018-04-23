@@ -102,7 +102,7 @@ export class DogsService {
     console.log("PETICION API MATCHES");
     return this._http.get<ResultApi>(`${environment.apiURL}/users/${userId}/dogs/${dogId}/matches`, httpOptions)
               .map(response => {
-                return response.result[0];
+                return response.result;
               })
   }
 
