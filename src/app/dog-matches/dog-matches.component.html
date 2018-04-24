@@ -2,10 +2,10 @@
   <h4>Mis Matches</h4>
   <ul>
     <li *ngFor="let dog of listadoMatches" class="dog_card">
-        <span *ngIf="dog.img_dog_matched.length >= 1">
+        <span *ngIf="dog.img_dog_matched">
           <img [src]="dog.img_dog_matched" class="img_photo_profile"/>
         </span>
-        <span *ngIf="dog.img_dog_matched.length === 0 ">
+        <span *ngIf="!dog.img_dog_matched">
           <img src="./../assets/No_Image.png" class="img_photo_profile"/>
         </span>
         <h5>{{ dog.name_dog_matched }}</h5>

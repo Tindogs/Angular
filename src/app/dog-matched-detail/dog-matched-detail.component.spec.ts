@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DogDashboardComponent } from './dog-dashboard.component';
+import { DogMatchedDetailComponent } from './dog-matched-detail.component';
 
-describe('DogDashboardComponent', () => {
-  let component: DogDashboardComponent;
-  let fixture: ComponentFixture<DogDashboardComponent>;
+describe('DogMatchedDetailComponent', () => {
+  let component: DogMatchedDetailComponent;
+  let fixture: ComponentFixture<DogMatchedDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DogDashboardComponent ]
+      declarations: [ DogMatchedDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DogDashboardComponent);
+    fixture = TestBed.createComponent(DogMatchedDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

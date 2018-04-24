@@ -1,0 +1,14 @@
+<h2>Perfil de la Mascota Matcheada</h2>
+<div class="user_detail">
+  <span *ngIf="dogMatched.photos.length >= 1">
+    <img [src]="dogMatched.photos[0]" class="img_photo_modal"/>
+  </span>
+  <span *ngIf="dogMatched.photos.length === 0 ">
+    <img src="./../assets/No_Image.png" class="img_photo_modal"/>
+  </span>
+  <h5> {{ dogMatched.name }}</h5>
+  <h6>{{ dogMatched.description}}</h6>
+  <h6>{{ dogMatched.age }}</h6>
+  <h6>{{ dogMatched.color }}</h6>
+  
+</div>

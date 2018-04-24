@@ -3,15 +3,15 @@ import { Dog } from './dog'
 export class User {
 
     constructor(
-        public id: number,
-        public first_name: string,
-        public last_name: string,
-        public email: string,
-        public username: string,
-        public password: string,
-        public coordinates: number[],
-        public photo: string,
-        public dogs: Dog[],
+        public id?: number,
+        public first_name?: string,
+        public last_name?: string,
+        public email?: string,
+        public username?: string,
+        public password?: string,
+        public coordinates?: number[],
+        public photo?: string,
+        public dogs?: Dog[],
      ) {}
 
     static newFromJson(json: any): User {
@@ -27,4 +27,7 @@ export class User {
             Dog.newCollectionFromJson(json.dogs),
         );
     }
+
 }
+
+let nuevoUser = new User(1,"Pepe");

@@ -62,7 +62,7 @@ export class UsersService {
         'token': this.getUserToken()
       })
     };
-    console.log("DATOS DESDE EL SERVICIO")
+    console.log("DATOS DESDE EL SERVICIO UPDATE")
     console.log(user)
     const id = this.getUserId();
     this.user = this._httpClient

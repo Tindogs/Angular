@@ -14,6 +14,7 @@ export class DogsService {
   
   dogs : Observable<Dog[]>;
   user : Observable<User>;
+  dog : Observable<Dog>;
 
   constructor(private _http: HttpClient, private _users: UsersService) { }
 
@@ -86,7 +87,7 @@ export class DogsService {
                     if(respuesta.success == true) {
                       console.log("Like From Others")
                       console.log(respuesta)
-                      return respuesta.result.match;
+                      return respuesta.result;
                     } 
                 })
   }
@@ -104,6 +105,22 @@ export class DogsService {
               .map(response => {
                 return response.result;
               })
+  }
+
+  getDogMatched(userMatchedId: string, dogMatchedId: string): Observable<Dog> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'token': this._users.getUserToken()
+      })
+    };
+    const token = this._users.getUserToken();
+    console.log("PETICION API DOG BY USER");
+    this.dog = this._http.get<ResultApi>(`${environment.apiURL}/users/${userMatchedId}/dogs/${dogMatchedId}`, httpOptions)
+              .map(response => {
+                console.log(response.result[0]);
+                return Dog.newFromJson(response.result[0])
+              });
+    return this.dog;
   }
 
 }

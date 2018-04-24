@@ -29,13 +29,13 @@ import { UsersService } from './users.service'
 import { DogsService } from './dogs.service'
 import { UploadsService } from './uploads.service';
 
-import { DogDetailComponent } from './dog-detail/dog-detail.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 import { DogToMatchDirective } from './dog-to-match.directive';
 import { DogMatchedComponent } from './dog-matched/dog-matched.component';
 import { DogMatchesComponent } from './dog-matches/dog-matches.component';
-import { DogDashboardComponent } from './dog-dashboard/dog-dashboard.component';
+import { DogMatchedDetailComponent } from './dog-matched-detail/dog-matched-detail.component';
+import { DogMatchedDashboardComponent } from './dog-matched-dashboard/dog-matched-dashboard.component';
 
 
 
@@ -54,13 +54,13 @@ import { DogDashboardComponent } from './dog-dashboard/dog-dashboard.component';
     UserDashboardComponent,
     DogMatchComponent,
     DogListComponent,
-    DogDetailComponent,
     UserUpdateComponent,
     UserUpdateFormComponent,
     DogToMatchDirective,
     DogMatchedComponent,
     DogMatchesComponent,
-    DogDashboardComponent
+    DogMatchedDetailComponent,
+    DogMatchedDashboardComponent
   ],
   imports: [
     BrowserModule,
