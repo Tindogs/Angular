@@ -1,14 +1,48 @@
-<h2>Perfil de la Mascota Matcheada</h2>
-<div class="user_detail">
-  <span *ngIf="dogMatched.photos.length >= 1">
-    <img [src]="dogMatched.photos[0]" class="img_photo_modal"/>
-  </span>
-  <span *ngIf="dogMatched.photos.length === 0 ">
-    <img src="./../assets/No_Image.png" class="img_photo_modal"/>
-  </span>
-  <h5> {{ dogMatched.name }}</h5>
-  <h6>{{ dogMatched.description}}</h6>
-  <h6>{{ dogMatched.age }}</h6>
-  <h6>{{ dogMatched.color }}</h6>
-  
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div class="col-md-auto">
+      <h2>Perfil de la Mascota Matcheada</h2>
+    </div>
+    <div class="col">
+      <ul>
+        <li class="menuLateral">
+          <a routerLink="/user_dashboard" routerLinkActive="active" class="nav-link" href="#">Volver al Perfil</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngIf="dogMatched">
+    <div class="col"></div>
+    <div class="col-md-5">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">{{ dogMatched.name }}</h4>
+            </div>
+            <div class="card-body">
+              <span *ngIf="dogMatched.photos.length >= 1">
+                <img [src]="dogMatched.photos[0]" class="img_photo_detail"/>
+              </span>
+              <span *ngIf="dogMatched.photos.length === 0 ">
+                <img src="./../assets/No_Image.png" class="img_photo_detail"/>
+              </span>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><b>Descripción</b>: {{ dogMatched.description }}</li>
+                <li><b>Edad</b>: {{ dogMatched.age }}</li>
+                <li><b>Color</b>: {{ dogMatched.color }}</li>
+                <li><b>Raza</b>: {{ dogMatched.breed }}</li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row" *ngIf="!dogMatched">
+    <div class="col"></div>
+    <div class="col-md-auto">
+      <h6 style="margin-top:2em">No se encuentran datos de la mascota Matcheada</h6>
+    </div>
+    <div class="col"></div>
+  </div>
 </div>
+

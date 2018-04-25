@@ -1,27 +1,31 @@
-<div>
-  <h4>Mis Perretes</h4>
-</div>
-
-<div>
-  <ul>
-    <li *ngFor="let dog of listado" class="dog_card" >
-        <span *ngIf="dog.photos.length >= 1">
-          <img [src]="dog.photos" class="img_photo_profile"/>
-        </span>
-        <span *ngIf="dog.photos.length === 0 ">
-          <img src="./../assets/No_Image.png" class="img_photo_profile"/>
-        </span>
-        <div>
-        <h5>{{ dog.name }}</h5>
-        <button (click)="DogSettings(dog, dogModal)" class="btn btn-primary">Ajustes</button>
-        <button (click)="MatchDog(dog)" class="btn btn-primary">Match</button>
-        <!-- <p>{{ dog.age }}</p> 
-        <p>{{ dog.description }}</p> -->
+<div class="container">
+  <h4 style="margin-bottom: 0.8em;">Mis Mascotas</h4>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-md-auto">
+      <div class="card-deck mb-3 text-center" style="display: -webkit-box;">
+        <div class="card mb-4 box-shadow" *ngFor="let dog of listado">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">{{ dog.name }}</h4>
+          </div>
+          <div class="card-body">
+            <span *ngIf="dog.photos.length >= 1">
+              <img [src]="dog.photos" class="img_photo_profile"/>
+            </span>
+            <span *ngIf="dog.photos.length === 0 ">
+              <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+            </span>
+            <div>
+              <button (click)="DogSettings(dog, dogModal)" class="btn btn-primary">Ajustes</button>
+              <button (click)="MatchDog(dog)" class="btn btn-primary">Match</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </li>
-  </ul>
+    </div>
+    <div class="col"></div>
+  </div>
 </div>
-
 <!-- Modal -->
 <ng-template #dogModal let-close="close" let-dismiss="dismiss">
   <div class="modal-header">

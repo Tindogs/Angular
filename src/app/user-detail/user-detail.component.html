@@ -1,10 +1,10 @@
 <h2>Perfil de Usuario</h2>
 <div class="user_detail">
   <span *ngIf="user.photo">
-    <img [src]="user.photo" class="img_photo_profile"/>
+    <img [src]="user.photo" class="img_photo_modal"/>
   </span>
   <span *ngIf="user.photo === undefined || user.photo === '' ">
-    <img src="./../assets/No_Image.png" class="img_photo_profile"/>
+    <img src="./../assets/No_Image.png" class="img_photo_modal"/>
   </span>
   <h5> {{ user.first_name }} {{ user.last_name }}</h5>
   <h6>{{ user.email }}</h6>
