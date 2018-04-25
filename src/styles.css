@@ -5,6 +5,7 @@
     height: 120px;
     border-radius: 60px;
     margin-bottom: 1em;
+    border: 1px solid lightgray;
 }
 
 .img_photo_modal {
@@ -51,6 +52,17 @@ h5,h4 {
     min-width: 150px;
     left: -20px;
     position: relative;
+}
+
+.hand_like {
+    text-align: left;
+    margin-top: 5em;
+    margin-left: -1em;
+}
+
+.card {
+    display: inline-block;
+    margin: 1em;
 }
 
 .dogMatched_data h6 {

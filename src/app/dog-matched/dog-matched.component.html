@@ -14,7 +14,12 @@
   </div>
   <div class="row">
     <div class="col"></div>
-    <div class="col-md-auto">
+    <!-- PINTO UN MENSAJE SI NO HAY PREFERENCIAS GUARDADAS-->
+    <div class="col-md-auto" *ngIf="!dog" style="margin: 3em 0 3em 0;">
+      <h6>No has guardado las preferencias de búsqueda,
+        <br>por eso no te aparece ninguna mascota cercana.</h6>
+    </div>
+    <div class="col-md-auto" *ngIf="dog">
       <span *ngIf="dog.photos.length >= 1">
           <img [src]="dog.photos[0]" class="img_photo_match"/>
         </span>
@@ -25,13 +30,15 @@
         <p>{{ dog.description }}</p>
     </div>
 
-    <div class="col" style="text-align: left; margin-top: 5em; margin-left: -1em;">
+    <div class="col hand_like" *ngIf="dog.likes_from_others">
       <div *ngFor="let likes of dog.likes_from_others"> 
         <span *ngIf="dog.likes_from_others.length >= 1 && likes.dog_like_id === dog_id"  style="font-size: 3em; color: lightgreen; display: inline-block">
             <i class="fa fa-thumbs-up fa-lg"></i>
         </span>
       </div> 
     </div>
+
+    <div class="col" *ngIf="!dog.likes_from_others"></div>
 
   </div>
   

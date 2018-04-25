@@ -1,24 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container-fluid">
-<header>
-  <div class="row cabecera">
-    <div class="col logo">
-        <img alt="Tindogs" class="logocabecera" src="../assets/Tindogs2.png">
-    </div>
-    <div class="col">
-        <ul>
-          <li class="nav-item">
-            <a routerLink="/login" routerLinkActive="active" class="nav-link" href="#">Login</a>
-          </li>
-        </ul>
-    </div>
-   
-  </div>
+  <header>
+    <div class="row cabecera">
+      <div class="col logo">
+          <img alt="Tindogs" class="logocabecera" src="../assets/Tindogs2.png">
+      </div>
+      <div class="col">
+          <ul>
+            <li class="nav-item">
+              <a routerLink="/login" routerLinkActive="active" class="nav-link" href="#">Login</a>
+            </li>
+          </ul>
+      </div>
     
-</header>
+    </div>
+      
+  </header>
 
   <div style="text-align:center">
     <router-outlet></router-outlet>
   </div>
+
+  <footer class="pt-2 border-top">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-3 col-md-auto" style="text-align: center">
+          <img src="../assets/Tindogs1.png" alt="" width="135" height="95">
+          <small class="d-block mb-3 text-muted">© Tindogs 2018</small>
+        </div>
+        <div class="col"></div>
+      </div>
+    </footer>
 </div>
 

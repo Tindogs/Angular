@@ -1,5 +1,5 @@
 <h2>Perfil de Usuario</h2>
-<div class="user_detail">
+<div class="user_detail" *ngIf="user">
   <span *ngIf="user.photo">
     <img [src]="user.photo" class="img_photo_modal"/>
   </span>

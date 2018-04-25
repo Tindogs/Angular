@@ -27,3 +27,7 @@ a:hover {
     width: 240px;
     margin-left: 5em;
 }
+
+footer {
+    margin-bottom: 0;
+}
