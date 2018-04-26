@@ -18,6 +18,8 @@ export class DogListComponent implements OnInit {
   @Output() newDogSettings = new EventEmitter<any>();
   @Output() newDogMatch = new EventEmitter<Dog>();
   @Input() listado: Dog;
+  @Input() showAlert: boolean;
+  
   breeds: string[];
   dog: Dog
   dogId : string

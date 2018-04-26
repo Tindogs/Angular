@@ -107,6 +107,12 @@
             >Guardar preferencias</button>
         </div>
     </form>
+    <!-- ALERT -->
+      <div *ngIf="showAlert === true">
+        <ngb-alert [dismissible]="false">
+          <p>Los ajustes de búsqueda se han cambiado correctamente.</p>
+        </ngb-alert>
+      </div>
   </div>
   <div class="modal-footer">
       

@@ -12,13 +12,14 @@
     width: 200px;
     height: 200px;
     border-radius: 100px;
+    border: 1px solid lightgray;
 }
 
 .img_photo_detail {
     width: 300px;
     height: 300px;
-    padding: 1em;
     border-radius: 150px;
+    border: 1px solid lightgray;
 }
 
 /* FORMS */

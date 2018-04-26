@@ -3,6 +3,7 @@
             (updateUser)="updateUser($event)">
 </user-detail>
 <dog-list [listado]="_perretes"
+            [showAlert]="showAlert"
             (newDogSettings)="updateDogSettings($event)"
             (newDogMatch)="dogMatch($event)">
 

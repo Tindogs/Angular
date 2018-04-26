@@ -30,15 +30,15 @@
         <p>{{ dog.description }}</p>
     </div>
 
-    <div class="col hand_like" *ngIf="dog.likes_from_others">
-      <div *ngFor="let likes of dog.likes_from_others"> 
-        <span *ngIf="dog.likes_from_others.length >= 1 && likes.dog_like_id === dog_id"  style="font-size: 3em; color: lightgreen; display: inline-block">
-            <i class="fa fa-thumbs-up fa-lg"></i>
-        </span>
-      </div> 
+    <div class="col" >
+      <div *ngIf="dog.likes_from_others" class="hand_like">
+        <div *ngFor="let likes of dog.likes_from_others"> 
+          <span *ngIf="dog.likes_from_others.length >= 1 && likes.dog_like_id === dog_id"  style="font-size: 3em; color: lightgreen; display: inline-block">
+              <i class="fa fa-thumbs-up fa-lg"></i>
+          </span>
+        </div> 
+      </div>
     </div>
-
-    <div class="col" *ngIf="!dog.likes_from_others"></div>
 
   </div>
   

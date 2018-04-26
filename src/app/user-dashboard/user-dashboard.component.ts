@@ -21,6 +21,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
   userId: string;
   query: Query;
   userServiceSubscription: Subscription;
+  showAlert: boolean = false;
 
 
   constructor(
@@ -61,7 +62,8 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
 
     this._dogsService.updateQueryDog(this.userId, $event.dogId, this.query)
     .subscribe(dog => {
-      alert('Los ajustes de búsqueda se han cambiado correctamente :-)');
+      //alert('Los ajustes de búsqueda se han cambiado correctamente :-)');
+      this.showAlert = true;
       this.router.navigate(['/user_dashboard']);
     })
   }
@@ -76,7 +78,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
       navigator.geolocation.getCurrentPosition(
         (data) => {
           console.log(data.coords);
-          user.coordinates = [data.coords.latitude, data.coords.longitude];
+          user.coordinates = [data.coords.longitude, data.coords.latitude];
           // Llamo al servicio updateUser y me suscribo pasando las coordinates
           this.userServiceSubscription = this._usersService.updateUser(user)
           .subscribe((user) => {
