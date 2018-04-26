@@ -36,6 +36,7 @@ import { DogMatchedComponent } from './dog-matched/dog-matched.component';
 import { DogMatchesComponent } from './dog-matches/dog-matches.component';
 import { DogMatchedDetailComponent } from './dog-matched-detail/dog-matched-detail.component';
 import { DogMatchedDashboardComponent } from './dog-matched-dashboard/dog-matched-dashboard.component';
+import { UserLogoutComponent } from './user-logout/user-logout.component';
 
 
 
@@ -60,7 +61,8 @@ import { DogMatchedDashboardComponent } from './dog-matched-dashboard/dog-matche
     DogMatchedComponent,
     DogMatchesComponent,
     DogMatchedDetailComponent,
-    DogMatchedDashboardComponent
+    DogMatchedDashboardComponent,
+    UserLogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -75,3 +75,14 @@ li.menuLateral {
     list-style: none;
     margin-top: 1em;
 }
+
+.logout {
+    min-height: 550px;
+    background-color: grey;
+    padding:0;
+    margin:0;
+}
+
+.tipoLetra {
+    font-family: 'Dancing Script';
+}

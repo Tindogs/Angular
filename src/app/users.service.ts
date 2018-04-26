@@ -75,15 +75,27 @@ export class UsersService {
 
 
   registerWebToken(token) {
-    localStorage.setItem('token',token)
+    localStorage.setItem('token',token);
   }
 
   registerId(id) {
-    localStorage.setItem('user_id',id)
+    localStorage.setItem('user_id',id);
   }
 
   registerDogId(dog_id) {
-    localStorage.setItem('dog_id', dog_id)
+    localStorage.setItem('dog_id', dog_id);
+  }
+
+  removeWebToken() {
+    localStorage.removeItem('token');
+  }
+
+  removeId() {
+    localStorage.removeItem('user_id');
+  }
+
+  removeDogId() {
+    localStorage.removeItem('dog_id');
   }
 
   getUserId() {
