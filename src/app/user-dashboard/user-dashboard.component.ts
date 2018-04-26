@@ -78,7 +78,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
       navigator.geolocation.getCurrentPosition(
         (data) => {
           console.log(data.coords);
-          user.coordinates = [data.coords.longitude, data.coords.latitude];
+          user.coordinates = [data.coords.latitude, data.coords.longitude];
           // Llamo al servicio updateUser y me suscribo pasando las coordinates
           this.userServiceSubscription = this._usersService.updateUser(user)
           .subscribe((user) => {
