@@ -1,4 +1,19 @@
 <signup-form 
-    (newRegister)="newSubmit($event)" 
+    (newRegister)="newSubmit($event, userSignupModal)" 
 >
 </signup-form>
+
+<ng-template #userSignupModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Contacto Creado</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Se ha creado el contacto correctamente.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Ok</button>
+    </div>
+</ng-template>

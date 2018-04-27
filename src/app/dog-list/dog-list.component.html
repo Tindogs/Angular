@@ -1,7 +1,11 @@
 <div class="container">
   <h4>Mis Mascotas</h4>
+  <div class="row">
     <div class="col"></div>
-    <div class="col-md-9">
+    <div class="col-md-12" *ngIf="!listado" style="margin:3em 0 3em 0;">
+      <h6>No tienes mascotas dadas de alta aún.</h6>
+    </div>
+    <div class="col-md-12" *ngIf="listado">
         <div class="card box-shadow" *ngFor="let dog of listado">
           <div class="card-header">
             <h4 class="my-0 font-weight-normal">{{ dog.name }}</h4>
@@ -21,6 +25,7 @@
         </div>
     </div>
     <div class="col"></div>
+  </div>
 </div>
 
 <!-- Modal -->

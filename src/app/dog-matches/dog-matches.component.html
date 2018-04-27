@@ -3,10 +3,10 @@
   <div class="row">
       <div class="col"></div>
       <!-- PINTO UN MENSAJE SI NO HAY PREFERENCIAS GUARDADAS-->
-    <div class="col-md-9" *ngIf="!listadoMatches" style="margin: 3em 0 3em 0;">
+      <div class="col-md-12" *ngIf="listadoMatches === null || listadoMatches.length === 0" style="margin: 3em 0 3em 0;">
         <h6>No has hecho Match con ningún perro aún.</h6>
       </div>
-      <div class="col-md-9"  *ngIf="listadoMatches">
+      <div class="col-md-12"  *ngIf="listadoMatches">
           <div class="card box-shadow" *ngFor="let dog of listadoMatches">
             <div class="card-header">
               <h4 class="my-0 font-weight-normal">{{ dog.name_dog_matched }}</h4>

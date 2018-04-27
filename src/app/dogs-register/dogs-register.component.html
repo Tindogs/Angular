@@ -1,5 +1,20 @@
 <dog-register-form 
-    (newDogRegister)="newDogSubmit($event)" 
+    (newDogRegister)="newDogSubmit($event, dogRegisterModal)" 
     [dataDropdown]=breeds
 >
 </dog-register-form>
+
+<ng-template #dogRegisterModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Mascota Creada</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>La mascota se ha creado correctamente. La podrás ver en listado de Mis Mascotas.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Ok</button>
+    </div>
+</ng-template>

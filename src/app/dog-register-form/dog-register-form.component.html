@@ -59,10 +59,10 @@
                 <label for="radioPurebreed"><b>Apareamiento</b></label><br />
                 <div class="form-check">
                   <label class="btn btn-secondary" for="radioPurebreed1">
-                    <input type="radio" id="radioPurebreed1" ngModel #purebreedRef="ngModel"  name="purebreed" value="'true'" required> Si<br>
+                    <input type="radio" id="radioPurebreed1" ngModel #purebreedRef="ngModel"  name="purebreed" value="true" required> Si<br>
                   </label>
                   <label class="btn btn-secondary active" for="radioPurebreed2">
-                    <input type="radio" id="radioPurebreed2" ngModel #purebreedRef="ngModel" name="purebreed" value="'false'" checked> No<br>
+                    <input type="radio" id="radioPurebreed2" ngModel #purebreedRef="ngModel" name="purebreed" value="false" checked> No<br>
                   </label>
                 </div>
                 <div class="mensaje-error" *ngIf="purebreedRef.touched && purebreedRef.invalid">Debes marcar si el perro es de raza pura.</div>

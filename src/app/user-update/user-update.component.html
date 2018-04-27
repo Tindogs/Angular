@@ -1,2 +1,17 @@
-<user-update-form (newUpdateUser)="UpdateUserSubmit($event)">
+<user-update-form (newUpdateUser)="UpdateUserSubmit($event, userUpdateModal)">
 </user-update-form>
+
+<ng-template #userUpdateModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Contacto Actualizado</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>El contacto se ha actualizado correctamente.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Ok</button>
+    </div>
+</ng-template>

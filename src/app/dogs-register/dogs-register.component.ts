@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 import { DogsService } from '../dogs.service'
 
@@ -22,14 +23,15 @@ export class DogsRegisterComponent implements OnInit {
 
   constructor(private _dogsService: DogsService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private _modalService: NgbModal) { }
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.breeds = this._dogsService.getDogsBreed()
   }
 
-  newDogSubmit($event) {
+  newDogSubmit($event, dogRegisterModal) {
     this.queryDog = new Query(1,1000,true, $event.value.dogBreed);
     const dog = new Dog("",
                 $event.value.dogName,
@@ -44,6 +46,7 @@ export class DogsRegisterComponent implements OnInit {
               );
    this._dogsService.registerNewDog(this.userId,dog)
    .subscribe(dog => {
+     this._modalService.open(dogRegisterModal, { centered: true });
      this.router.navigate(['/user_dashboard']);
    })
   }
