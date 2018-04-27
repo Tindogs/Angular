@@ -38,6 +38,7 @@ export class UsersService {
                 .post(`${environment.apiURL}/users/register/`, user)
                 .map((respuesta: Response) => { 
                   this.registerWebToken(respuesta.json().token)
+                  this.registerId(respuesta.json().result._id)
                   return User.newFromJson(respuesta.json().result)
                 })
   }
