@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Web server
 
-To view this web in a browser, navigate to `http://34.239.83.44/`.
+To view this web in a browser, navigate to [Tindogs](http://34.239.83.44).
 
 ## Development server
 
